@@ -1,9 +1,29 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!doctype html>
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jamal vs Hajj | جمال ضد الحاج</title>
+    <title>Taha — Product Designer</title>
+    <meta name="description" content="Product designer crafting end-to-end digital experiences — from first sketch to shipped pixels." />
+    <meta name="theme-color" content="#0b0b0c" />
+    <meta property="og:title" content="Taha — Product Designer" />
+    <meta property="og:description" content="Product designer crafting end-to-end digital experiences." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <script>
+      // Apply the saved (or system) theme before first paint to avoid a flash.
+      try {
+        var t = localStorage.getItem('theme')
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

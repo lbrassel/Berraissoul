@@ -1,0 +1,119 @@
+html.has-cursor,
+html.has-cursor * {
+  cursor: none !important;
+}
+
+/* No box of its own, so the fixed children blend with the page itself
+   (a fixed wrapper would isolate mix-blend-mode inside its own stacking context). */
+.cursor {
+  display: contents;
+}
+
+.cursor-ring,
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  will-change: transform;
+}
+
+.cursor.is-visible > * {
+  opacity: 1;
+}
+
+.cursor-ring-shape,
+.cursor-dot-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  translate: -50% -50%;
+  border-radius: 50%;
+}
+
+.cursor-ring {
+  mix-blend-mode: difference;
+}
+
+.cursor-ring-shape {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #fff;
+  display: grid;
+  place-items: center;
+  transition:
+    width 0.45s var(--ease-out),
+    height 0.45s var(--ease-out),
+    background-color 0.3s,
+    border-color 0.3s,
+    scale 0.3s var(--ease-out);
+}
+
+.cursor-dot {
+  mix-blend-mode: difference;
+}
+
+.cursor-dot-shape {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  transition:
+    scale 0.3s var(--ease-out),
+    opacity 0.2s;
+}
+
+.cursor-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--on-accent);
+  white-space: nowrap;
+  opacity: 0;
+  scale: 0.6;
+  transition:
+    opacity 0.25s,
+    scale 0.4s var(--ease-out);
+}
+
+.cursor.is-down .cursor-ring-shape {
+  scale: 0.8;
+}
+
+.cursor[data-state='link'] .cursor-ring-shape {
+  width: 64px;
+  height: 64px;
+  background: #fff;
+}
+
+.cursor[data-state='link'] .cursor-dot-shape,
+.cursor[data-state='view'] .cursor-dot-shape,
+.cursor[data-state='drag'] .cursor-dot-shape {
+  scale: 0;
+}
+
+.cursor[data-state='view'] .cursor-ring,
+.cursor[data-state='drag'] .cursor-ring {
+  mix-blend-mode: normal;
+}
+
+.cursor[data-state='view'] .cursor-ring-shape,
+.cursor[data-state='drag'] .cursor-ring-shape {
+  width: 104px;
+  height: 104px;
+  background: var(--accent);
+  border-color: transparent;
+}
+
+.cursor[data-state='view'] .cursor-label,
+.cursor[data-state='drag'] .cursor-label {
+  opacity: 1;
+  scale: 1;
+}
+
+.cursor[data-state='hide'] > * {
+  opacity: 0;
+}

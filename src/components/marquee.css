@@ -1,0 +1,50 @@
+.marquee-band {
+  padding-block: clamp(24px, 4vw, 56px);
+  border-block: 1px solid var(--line);
+  overflow: clip;
+  rotate: -2deg;
+  margin-inline: -2vw;
+  background: var(--bg);
+}
+
+.marquee {
+  overflow: clip;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: translate, transform;
+}
+
+.marquee-group {
+  display: flex;
+  flex: none;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding-right: 0.45em;
+  font-size: clamp(2.4rem, 6.5vw, 6.5rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.marquee--outline .marquee-item {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--fg-3);
+}
+
+.marquee-star {
+  font-size: 0.45em;
+  color: var(--accent);
+  -webkit-text-stroke: 0;
+}
