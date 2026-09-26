@@ -1,0 +1,80 @@
+.pl {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--bg-2);
+  color: var(--fg);
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+}
+
+.pl-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.pl-meta--tl,
+.pl-meta--tr {
+  position: absolute;
+  top: var(--gutter);
+}
+
+.pl-meta--tl {
+  left: var(--gutter);
+}
+
+.pl-meta--tr {
+  right: var(--gutter);
+}
+
+.pl-name {
+  display: flex;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(5rem, 22vw, 20rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.pl-char-mask {
+  display: inline-block;
+  overflow: clip;
+  padding: 0.04em 0.03em 0.12em;
+}
+
+.pl-char {
+  display: inline-block;
+}
+
+.pl-foot {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: calc(var(--gutter) + 14px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.pl-count {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.pl-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}

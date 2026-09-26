@@ -1,0 +1,39 @@
+.pt {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pt-panel {
+  position: absolute;
+  inset: 0;
+  clip-path: ellipse(150% 0% at 50% 100%);
+  display: grid;
+  place-items: center;
+}
+
+.pt-panel--accent {
+  background: var(--accent);
+}
+
+.pt-panel--ink {
+  background: var(--bg-2);
+}
+
+.pt-label-mask {
+  display: block;
+  overflow: clip;
+  padding: 0.1em 0.2em;
+}
+
+.pt-label {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(3rem, 10vw, 9rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}

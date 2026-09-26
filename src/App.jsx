@@ -1,40 +1,86 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { Analytics } from '@vercel/analytics/react'
-import { useEffect, useState } from 'react'
-import { supabase } from './lib/supabase'
-import PublicPage from './pages/PublicPage'
-import LoginPage from './pages/LoginPage'
-import AdminPage from './pages/AdminPage'
+import { lazy, Suspense, useEffect, useRef } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import { ScrollTrigger } from './lib/gsap'
+import { scrollToTarget } from './lib/scroll'
+import { TransitionProvider, useReady } from './components/Transition'
+import { ProjectsProvider } from './components/Projects'
+import SmoothScroll from './components/SmoothScroll'
+import Preloader from './components/Preloader'
+import Cursor from './components/Cursor'
+import ScrollProgress from './components/ScrollProgress'
+import Nav from './components/Nav'
+import Footer from './components/Footer'
+import Home from './pages/Home'
+import CaseStudy from './pages/CaseStudy'
+import NotFound from './pages/NotFound'
 
-function ProtectedRoute({ session, children }) {
-  if (!session) return <Navigate to="/login" replace />
-  return children
+// The admin area is a separate, plain app loaded only when someone visits /admin.
+const AdminApp = lazy(() => import('./admin/AdminApp'))
+
+// Handles scroll position for browser back/forward and deep links like /#contact.
+function ScrollManager() {
+  const { pathname, hash } = useLocation()
+  const ready = useReady()
+  const first = useRef(true)
+
+  useEffect(() => {
+    if (first.current) return
+    window.scrollTo(0, 0)
+    const id = requestAnimationFrame(() => ScrollTrigger.refresh())
+    return () => cancelAnimationFrame(id)
+  }, [pathname])
+
+  useEffect(() => {
+    if (!ready || !first.current) return
+    first.current = false
+    if (!hash) return
+    const id = requestAnimationFrame(() => {
+      ScrollTrigger.refresh()
+      scrollToTarget(hash, { immediate: true })
+    })
+    return () => cancelAnimationFrame(id)
+  }, [ready, hash])
+
+  return null
 }
 
 export default function App() {
-  const [session, setSession] = useState(undefined)
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => setSession(data.session))
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, s) => setSession(s))
-    return () => subscription.unsubscribe()
-  }, [])
-
-  if (session === undefined) return null
-
+  const { pathname } = useLocation()
+  if (pathname === '/admin' || pathname.startsWith('/admin/')) {
+    return (
+      <Suspense fallback={null}>
+        <AdminApp />
+      </Suspense>
+    )
+  }
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<PublicPage />} />
-        <Route path="/login" element={session ? <Navigate to="/admin" replace /> : <LoginPage />} />
-        <Route path="/admin" element={
-          <ProtectedRoute session={session}>
-            <AdminPage />
-          </ProtectedRoute>
-        } />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-      <Analytics />
-    </BrowserRouter>
+    <ProjectsProvider>
+      <Site />
+    </ProjectsProvider>
+  )
+}
+
+function Site() {
+  return (
+    <TransitionProvider>
+      <SmoothScroll />
+      <ScrollManager />
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <ScrollProgress />
+      <Nav />
+      <main id="main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/work/:slug" element={<CaseStudy />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+      <Preloader />
+      <Cursor />
+      <div className="grain" aria-hidden="true" />
+    </TransitionProvider>
   )
 }

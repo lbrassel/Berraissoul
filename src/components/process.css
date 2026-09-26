@@ -1,0 +1,140 @@
+.process {
+  background: var(--bg-2);
+  border-radius: clamp(24px, 4vw, 56px);
+  margin-inline: clamp(8px, 1vw, 16px);
+}
+
+.proc-pin {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: clip;
+  padding-block: clamp(96px, 12vh, 140px) 64px;
+}
+
+.proc-track {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(16px, 2vw, 32px);
+  width: max-content;
+  padding-inline: var(--gutter);
+  will-change: transform;
+}
+
+.proc-intro {
+  width: clamp(320px, 38vw, 620px);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-right: clamp(24px, 6vw, 120px);
+}
+
+.proc-lede {
+  max-width: 36ch;
+  color: var(--fg-2);
+  font-size: clamp(16px, 1.25vw, 19px);
+  margin-top: auto;
+}
+
+.proc-card {
+  position: relative;
+  width: clamp(300px, 30vw, 480px);
+  min-height: clamp(380px, 56vh, 560px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: clamp(24px, 2.4vw, 40px);
+  border-radius: var(--radius);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.proc-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(5rem, 9vw, 9rem);
+  line-height: 0.85;
+  color: var(--accent);
+}
+
+.proc-title {
+  margin-top: auto;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.proc-text {
+  color: var(--fg-2);
+  font-size: 16px;
+}
+
+.proc-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.proc-items li {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--fg-2);
+}
+
+.proc-progress {
+  margin-top: 40px;
+}
+
+.proc-progress span {
+  display: block;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.proc-progress::before {
+  content: '';
+  display: block;
+  height: 2px;
+  margin-bottom: -2px;
+  background: var(--line);
+}
+
+@media (max-width: 899px), (prefers-reduced-motion: reduce) {
+  .proc-pin {
+    min-height: 0;
+    padding-block: var(--section-space);
+  }
+  .proc-track {
+    width: auto;
+    flex-direction: column;
+  }
+  .proc-intro,
+  .proc-card {
+    width: 100%;
+  }
+  .proc-intro {
+    padding-right: 0;
+    margin-bottom: 24px;
+  }
+  .proc-card {
+    min-height: 0;
+  }
+  .proc-num {
+    font-size: 4.5rem;
+  }
+  .proc-title {
+    margin-top: 12px;
+  }
+  .proc-progress {
+    display: none;
+  }
+}
