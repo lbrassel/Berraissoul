@@ -261,7 +261,8 @@
   top: 50%;
   width: 86cqw;
   height: 58cqw;
-  translate: -50% -50%;
+  /* Centred with margins: the minifier drops `translate` when `transform` is also set. */
+  margin: -29cqw 0 0 -43cqw;
   transform: perspective(140cqw) rotateY(-14deg) rotateX(9deg) rotateZ(2deg);
   border-radius: 2.2cqw;
   background: var(--c-ui);
