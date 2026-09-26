@@ -3,6 +3,7 @@ import { gsap, useGSAP } from '../lib/gsap'
 import { reducedMotion, wait } from '../lib/motion'
 import { site } from '../content'
 import { usePageTransition } from './Transition'
+import { loadProjects } from './Projects'
 import './preloader.css'
 
 export default function Preloader() {
@@ -17,6 +18,8 @@ export default function Preloader() {
       const bar = root.current.querySelector('.pl-bar')
       const meta = root.current.querySelectorAll('.pl-meta')
       const fonts = Promise.race([document.fonts?.ready ?? Promise.resolve(), wait(2500)])
+      const data = Promise.race([loadProjects(), wait(6000)])
+      const loaded = Promise.all([fonts, data])
       // Ignore late callbacks from a setup that has already been reverted (StrictMode runs it twice).
       let live = true
 
@@ -24,7 +27,7 @@ export default function Preloader() {
         const fade = contextSafe(() =>
           gsap.to(root.current, { autoAlpha: 0, duration: 0.3, onComplete: () => setDone(true) }),
         )
-        fonts.then(() => {
+        loaded.then(() => {
           if (!live) return
           setReady(true)
           fade()
@@ -66,7 +69,7 @@ export default function Preloader() {
 
       let pending = 2
       const settle = () => --pending === 0 && exit()
-      fonts.then(settle)
+      loaded.then(settle)
       intro.eventCallback('onComplete', settle)
       return () => (live = false)
     },

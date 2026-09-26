@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react'
+import { lazy, Suspense, useEffect, useRef } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { ScrollTrigger } from './lib/gsap'
 import { scrollToTarget } from './lib/scroll'
 import { TransitionProvider, useReady } from './components/Transition'
+import { ProjectsProvider } from './components/Projects'
 import SmoothScroll from './components/SmoothScroll'
 import Preloader from './components/Preloader'
 import Cursor from './components/Cursor'
@@ -12,6 +13,9 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import CaseStudy from './pages/CaseStudy'
 import NotFound from './pages/NotFound'
+
+// The admin area is a separate, plain app loaded only when someone visits /admin.
+const AdminApp = lazy(() => import('./admin/AdminApp'))
 
 // Handles scroll position for browser back/forward and deep links like /#contact.
 function ScrollManager() {
@@ -41,6 +45,22 @@ function ScrollManager() {
 }
 
 export default function App() {
+  const { pathname } = useLocation()
+  if (pathname === '/admin' || pathname.startsWith('/admin/')) {
+    return (
+      <Suspense fallback={null}>
+        <AdminApp />
+      </Suspense>
+    )
+  }
+  return (
+    <ProjectsProvider>
+      <Site />
+    </ProjectsProvider>
+  )
+}
+
+function Site() {
   return (
     <TransitionProvider>
       <SmoothScroll />

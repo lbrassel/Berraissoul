@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { gsap } from '../lib/gsap'
 import { finePointer, reducedMotion } from '../lib/motion'
-import { projects } from '../content'
 import { TLink, useReadyGSAP } from './Transition'
+import { useProjects } from './Projects'
 import ProjectCover from './ProjectCover'
 import SplitReveal from './SplitReveal'
 import './work.css'
@@ -99,6 +99,7 @@ function WorkCard({ project, index }) {
 }
 
 export default function Work() {
+  const { projects } = useProjects()
   return (
     <section className="section work" id="work" aria-labelledby="work-title">
       <div className="wrap">
