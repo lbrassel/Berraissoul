@@ -80,13 +80,17 @@ export function TransitionProvider({ children }) {
       }),
   )
 
+  // The router's path, which differs from window.location under MemoryRouter.
+  const current = useRef(pathname)
+  current.current = pathname
+
   const go = useCallback(
     async (to, text = '') => {
       if (busy.current) return
-      const url = new URL(to, window.location.href)
+      const url = new URL(to, window.location.origin)
 
       // Same page: just glide to the anchor (or the top).
-      if (url.pathname === window.location.pathname) {
+      if (url.pathname === current.current) {
         scrollToTarget(url.hash || 0)
         return
       }
