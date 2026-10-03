@@ -59,7 +59,7 @@ export const site = {
   ],
 
   socials: [
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/' }, // TODO
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/berraissoul/' },
     { label: 'Dribbble', href: 'https://dribbble.com/' }, // TODO
     { label: 'Behance', href: 'https://www.behance.net/' }, // TODO
     { label: 'Instagram', href: 'https://www.instagram.com/' }, // TODO
