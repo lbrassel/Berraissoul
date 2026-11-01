@@ -45,6 +45,7 @@ const KIND_LABELS = {
   dashboard: 'Dashboard',
   commerce: 'Shop',
   system: 'Components',
+  creators: 'Creators',
   abstract: 'Abstract',
 }
 

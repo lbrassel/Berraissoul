@@ -737,6 +737,263 @@
   font-size: 1.8cqw;
 }
 
+/* ── Creators ────────────────────────────────────────────────────────── */
+/* Four layers (orbit, card, chip, GMV) that drift with the pointer (--px/--py, set in
+   ProjectCover.jsx) and settle into place on hover. */
+
+/* Drawn on a 100 × 80cqw board and centred, so it also fits the wide 16:9 case-study frame. */
+.cv-eu {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 80cqw;
+  margin-top: -40cqw;
+}
+
+.cv-eu > * {
+  position: absolute;
+  transition:
+    translate 0.6s var(--ease-out),
+    scale 0.9s var(--ease-out),
+    rotate 0.9s var(--ease-out);
+}
+
+.cv-eu-orbit {
+  left: 20cqw;
+  top: 10cqw;
+  width: 60cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 0.3cqw solid var(--ink-25);
+  translate: calc(var(--px, 0) * -1.4cqw) calc(var(--py, 0) * -1.4cqw);
+  animation: cv-eu-spin 46s linear infinite;
+}
+
+.cv-eu-orbit i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  box-sizing: border-box;
+  width: 5.4cqw;
+  aspect-ratio: 1;
+  margin: -2.7cqw 0 0 -2.7cqw;
+  border-radius: 50%;
+  border: 0.55cqw solid var(--c-ui);
+  box-shadow: var(--shadow);
+}
+
+.cv-eu-orbit i:nth-child(1) {
+  translate: 0 -30cqw;
+  background: var(--c-accent);
+}
+
+.cv-eu-orbit i:nth-child(2) {
+  translate: 26cqw 15cqw;
+  background: var(--c-ink);
+}
+
+.cv-eu-orbit i:nth-child(3) {
+  translate: -26cqw 15cqw;
+  background: var(--c-ui);
+  border-color: var(--c-ink);
+}
+
+.cv-eu-card {
+  left: 35cqw;
+  top: 29.5cqw;
+  width: 30cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1cqw;
+  padding: 2.2cqw;
+  border-radius: 2.4cqw;
+  background: var(--c-ui);
+  box-shadow: var(--shadow);
+  translate: calc(var(--px, 0) * 1cqw) calc(var(--py, 0) * 1cqw);
+}
+
+.cv-eu-card .cv-big {
+  font-size: 5.6cqw;
+}
+
+.cv-eu-head {
+  display: flex;
+  align-items: center;
+  gap: 1.2cqw;
+  margin-bottom: 0.8cqw;
+}
+
+.cv-eu-level {
+  flex: none;
+  padding: 0.5cqw 1.1cqw;
+  border-radius: 99px;
+  background: var(--c-ink);
+  color: var(--c-bg);
+  font-family: var(--font-mono);
+  font-size: 1.4cqw;
+  font-weight: 600;
+}
+
+.cv-eu-meter {
+  display: block;
+  height: 0.9cqw;
+  margin-top: 0.6cqw;
+  border-radius: 99px;
+  background: var(--ink-10);
+  overflow: hidden;
+}
+
+.cv-eu-meter i {
+  display: block;
+  width: 68%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--c-accent);
+  transform-origin: left;
+  transition: transform 1s var(--ease-out);
+}
+
+.cv-eu-chip {
+  left: 57cqw;
+  top: 15cqw;
+  rotate: -6deg;
+  translate: calc(var(--px, 0) * 3cqw) calc(var(--py, 0) * 3cqw);
+}
+
+.cv-eu-chip-in {
+  display: flex;
+  align-items: center;
+  gap: 1.1cqw;
+  padding: 1.3cqw 2.4cqw;
+  border-radius: 99px;
+  background: var(--c-ink);
+  color: var(--c-bg);
+  font-size: 1.9cqw;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+  animation: cv-eu-bob 4.6s ease-in-out infinite alternate;
+}
+
+.cv-eu-chip-in b {
+  flex: none;
+  width: 1.2cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 0.5cqw color-mix(in srgb, var(--c-bg) 28%, transparent);
+}
+
+.cv-eu-gmv {
+  left: 9cqw;
+  top: 49cqw;
+  width: 25cqw;
+  translate: calc(var(--px, 0) * 2.2cqw) calc(var(--py, 0) * 2.2cqw);
+}
+
+.cv-eu-gmv-in {
+  padding: 2cqw;
+  border-radius: 2.2cqw;
+  background: var(--c-ink);
+  color: var(--c-ui);
+  box-shadow: var(--shadow);
+  animation: cv-eu-bob 5.8s ease-in-out -2.4s infinite alternate;
+}
+
+.cv-eu-gmv-label {
+  font-family: var(--font-mono);
+  font-size: 1.3cqw;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--c-bg) 80%, transparent);
+}
+
+.cv-eu-gmv-value {
+  display: flex;
+  align-items: baseline;
+  gap: 1cqw;
+  margin-top: 0.8cqw;
+  font-size: 4.4cqw;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.cv-eu-gmv-value small {
+  padding: 0.4cqw 0.9cqw;
+  border-radius: 99px;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-size: 1.5cqw;
+  letter-spacing: 0;
+}
+
+.cv-eu-gmv svg {
+  display: block;
+  width: 100%;
+  aspect-ratio: 100 / 28;
+  height: auto;
+  margin-top: 1.4cqw;
+  overflow: visible;
+}
+
+.cv-eu-line {
+  fill: none;
+  stroke: var(--c-bg);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.cover-host:hover .cv-eu-orbit {
+  scale: 1.07;
+}
+
+.cover-host:hover .cv-eu-card {
+  scale: 1.05;
+  rotate: -1.5deg;
+}
+
+.cover-host:hover .cv-eu-meter i {
+  transform: scaleX(1.25);
+}
+
+.cover-host:hover .cv-eu-chip {
+  scale: 1.1;
+  rotate: -2deg;
+}
+
+.cover-host:hover .cv-eu-gmv {
+  scale: 1.06;
+  rotate: 1.5deg;
+}
+
+.cover-host:hover .cv-eu-line {
+  animation: cv-eu-draw 1.2s var(--ease-out) both;
+}
+
+@keyframes cv-eu-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes cv-eu-bob {
+  to {
+    transform: translateY(-1.2cqw);
+  }
+}
+
+@keyframes cv-eu-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
 /* ── Abstract ────────────────────────────────────────────────────────── */
 
 .cv-blob {

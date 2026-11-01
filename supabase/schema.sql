@@ -39,7 +39,7 @@ create table if not exists public.case_studies (
   platform text not null default '',
   -- Illustration drawn when there is no cover image.
   kind text not null default 'mobile'
-    check (kind in ('mobile', 'dashboard', 'commerce', 'system', 'abstract')),
+    check (kind in ('mobile', 'dashboard', 'commerce', 'system', 'creators', 'abstract')),
   colors jsonb not null
     default '{"bg":"#3a2dff","bg2":"#8b6bff","ui":"#ffffff","accent":"#c9ff4a","ink":"#15123a"}',
   cover_url text,
@@ -56,6 +56,13 @@ create table if not exists public.case_studies (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+-- Tables made before the 'creators' cover existed keep the old list of illustrations.
+-- This refreshes it, so re-running this file is all an existing project needs.
+alter table public.case_studies drop constraint if exists case_studies_kind_check;
+alter table public.case_studies
+  add constraint case_studies_kind_check
+  check (kind in ('mobile', 'dashboard', 'commerce', 'system', 'creators', 'abstract'));
 
 create or replace function public.touch_updated_at()
 returns trigger

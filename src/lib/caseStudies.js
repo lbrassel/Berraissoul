@@ -1,6 +1,6 @@
 import { SUPABASE_KEY, SUPABASE_URL, TABLE } from './supabase'
 
-export const KINDS = ['mobile', 'dashboard', 'commerce', 'system', 'abstract']
+export const KINDS = ['mobile', 'dashboard', 'commerce', 'system', 'creators', 'abstract']
 export const DEFAULT_COLORS = { bg: '#3a2dff', bg2: '#8b6bff', ui: '#ffffff', accent: '#c9ff4a', ink: '#15123a' }
 
 const list = (value) => (Array.isArray(value) ? value : [])

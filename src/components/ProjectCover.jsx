@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+import { finePointer, reducedMotion } from '../lib/motion'
 import './cover.css'
 
 // Illustrated project covers drawn with HTML/CSS so the portfolio looks finished
@@ -6,6 +8,7 @@ import './cover.css'
 
 const bars = [42, 64, 38, 80, 56, 92, 70, 48]
 const line = 'M0 70 C 40 60, 60 20, 100 34 S 170 70, 210 40 S 280 10, 320 22'
+const spark = 'M0 24 C 10 22, 16 26, 26 18 S 44 20, 54 12 S 78 15, 88 6 S 96 3, 100 2'
 
 function Phone({ className = '', children }) {
   return (
@@ -186,6 +189,80 @@ function System() {
   )
 }
 
+// A creator card orbited by creators, with a sale landing and the day's GMV.
+// The layers drift with the pointer, each at its own depth.
+function Creators() {
+  const root = useRef(null)
+
+  useEffect(() => {
+    const el = root.current
+    const host = el?.closest('.cover')
+    if (!host || reducedMotion() || !finePointer()) return
+
+    const aim = (x, y) => {
+      el.style.setProperty('--px', x.toFixed(3))
+      el.style.setProperty('--py', y.toFixed(3))
+    }
+    const move = (e) => {
+      const r = host.getBoundingClientRect()
+      aim(((e.clientX - r.left) / r.width) * 2 - 1, ((e.clientY - r.top) / r.height) * 2 - 1)
+    }
+    const leave = () => aim(0, 0)
+
+    host.addEventListener('pointermove', move)
+    host.addEventListener('pointerleave', leave)
+    return () => {
+      host.removeEventListener('pointermove', move)
+      host.removeEventListener('pointerleave', leave)
+    }
+  }, [])
+
+  return (
+    <div className="cv-eu" ref={root}>
+      <div className="cv-eu-orbit">
+        <i />
+        <i />
+        <i />
+      </div>
+
+      <div className="cv-eu-card">
+        <div className="cv-eu-head">
+          <span className="cv-avatar is-accent" />
+          <span className="cv-lines">
+            <i style={{ width: '62%' }} />
+            <i style={{ width: '36%' }} />
+          </span>
+          <span className="cv-eu-level">L6</span>
+        </div>
+        <p className="cv-label">GMV · 30 days</p>
+        <p className="cv-big">$742K</p>
+        <span className="cv-eu-meter">
+          <i />
+        </span>
+      </div>
+
+      <div className="cv-eu-chip">
+        <span className="cv-eu-chip-in">
+          <b />
+          New order · +$48
+        </span>
+      </div>
+
+      <div className="cv-eu-gmv">
+        <div className="cv-eu-gmv-in">
+          <p className="cv-eu-gmv-label">GMV today</p>
+          <p className="cv-eu-gmv-value">
+            $4,820<small>+24%</small>
+          </p>
+          <svg viewBox="0 0 100 28" aria-hidden="true">
+            <path d={spark} pathLength="1" className="cv-eu-line" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function Abstract({ project }) {
   return (
     <>
@@ -197,7 +274,7 @@ function Abstract({ project }) {
   )
 }
 
-const kinds = { mobile: Mobile, dashboard: Dashboard, commerce: Commerce, system: System, abstract: Abstract }
+const kinds = { mobile: Mobile, dashboard: Dashboard, commerce: Commerce, system: System, creators: Creators, abstract: Abstract }
 
 export default function ProjectCover({ project, className = '', ratio }) {
   const { colors } = project

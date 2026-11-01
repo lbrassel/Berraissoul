@@ -116,8 +116,7 @@ export const projects = [
     timeline: '',
     team: '',
     platform: 'Web · Light & dark',
-    kind: 'dashboard',
-    image: '/work/euka/cover.webp',
+    kind: 'creators',
     colors: { bg: '#a6dd00', bg2: '#e6f6b0', ui: '#ffffff', accent: '#61a52f', ink: '#0c110d' },
     overview:
       'Euka helps TikTok Shop brands turn creators into a sales channel: find the right creators with AI, automate outreach and samples, and see every sale they drive. I designed the product end to end, from sign-in to analytics, along with the design system underneath it.',
