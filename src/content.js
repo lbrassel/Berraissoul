@@ -101,8 +101,103 @@ export const process = [
 // 'mobile' | 'dashboard' | 'commerce' | 'system' | 'abstract'
 // To use a real image instead, add `image: '/work/pulse.jpg'` (file in /public).
 
-// SAMPLE projects — replace with your real case studies
+// Euka is a real case study, written from the Euka Figma file. Pulse, Atlas, Souk
+// and Kernel below are SAMPLE projects — replace them with your real case studies.
+// TODO (Euka): confirm role, add timeline/team (hidden until filled in) and, once you
+// have them, swap the "results" for real outcomes.
 export const projects = [
+  {
+    slug: 'euka',
+    title: 'Euka',
+    tagline: 'Creator sales, all in one place.',
+    category: 'Web App · Creator commerce',
+    year: '2026',
+    role: 'Product Designer',
+    timeline: '',
+    team: '',
+    platform: 'Web · Light & dark',
+    kind: 'dashboard',
+    image: '/work/euka/cover.webp',
+    colors: { bg: '#a6dd00', bg2: '#e6f6b0', ui: '#ffffff', accent: '#61a52f', ink: '#0c110d' },
+    overview:
+      'Euka helps TikTok Shop brands turn creators into a sales channel: find the right creators with AI, automate outreach and samples, and see every sale they drive. I designed the product end to end, from sign-in to analytics, along with the design system underneath it.',
+    challenge:
+      'Creator marketing is a loop with a lot of moving parts: finding creators, inviting them, shipping samples, moderating content and tracing every sale back. Euka puts that whole loop in one product, so the challenge was making a dense, data-heavy workspace feel calm, scannable and honest about what is happening.',
+    quote: 'How might a brand go from finding a creator to seeing their first sale without ever leaving one product?',
+    approach: [
+      {
+        title: 'Map the loop',
+        text: 'Find creators, send invites, ship samples, track every sale. That loop became the spine of the product: Programs for the work, Insights for the results, and setup progress always one click away.',
+      },
+      {
+        title: 'Build the system first',
+        text: '26 colour tokens with text contrast checked to WCAG AA in light and dark, a type scale, spacing, radius and elevation, and ten groups of components, from status badges to creator-level tiers and combo charts.',
+      },
+      {
+        title: 'Design the in-between',
+        text: 'Beyond the happy path: 19 hidden states for menus, tooltips and dialogs, plus empty, stopped and error states, so the product stays clear when there is no data or an agent is paused.',
+      },
+    ],
+    highlights: [
+      {
+        title: 'Search in plain language',
+        text: 'Describe the creator you are after, like “creators saying ‘best shampoo’ in English”, and browse millions of results as cards or a table, with GMV, level and sample requests up front.',
+        image: '/work/euka/hl-creator-search.webp',
+      },
+      {
+        title: 'Agents that do the outreach',
+        text: 'AI agents find and message creators for you. Daily limits, run state and a plain “all agents are stopped” alert keep you in control of what is going out.',
+        image: '/work/euka/hl-outreach.webp',
+      },
+      {
+        title: 'A CRM for every creator',
+        text: 'Affiliates, Instagram creators and saved prospects in one table, with lists, segments, sample requests and creative briefs a click away.',
+        image: '/work/euka/hl-crm.webp',
+      },
+      {
+        title: 'A dashboard that explains itself',
+        text: 'The affiliate funnel runs from reach to activate, amplify and convert, and says what changed in plain words: “Impressions fell 21%. Orders held. Each view is converting better.”',
+        image: '/work/euka/hl-dashboard.webp',
+      },
+    ],
+    gallery: [
+      {
+        url: '/work/euka/sign-in.webp',
+        caption: 'Sign in. The live-activity brand panel was one of five directions explored.',
+      },
+      {
+        url: '/work/euka/creator-panel.webp',
+        caption: 'Creator drawer: rolling 30-day GMV, sales-channel and category breakdowns and recent videos, without leaving the results.',
+      },
+      {
+        url: '/work/euka/filters.webp',
+        caption: 'Filters live in a five-tab drawer. Five active filters narrow 4.4M creators to 12,480, shown as removable chips.',
+      },
+      {
+        url: '/work/euka/auto-responder.webp',
+        caption: 'Auto Responder: each week, creator questions it could not answer become suggested FAQ answers, ready to add in one click.',
+      },
+      {
+        url: '/work/euka/design-colour.webp',
+        caption: 'Colour tokens: 26 semantic tokens, text contrast checked to AA in light and dark.',
+      },
+      {
+        url: '/work/euka/design-badges.webp',
+        caption: 'Badges and indicators: status, creator level (L1–L7), delta, tag and counter.',
+      },
+      {
+        url: '/work/euka/outreach-agents.webp',
+        caption: 'Outreach Agents: quotas, status and results for every agent in one table.',
+      },
+    ],
+    results: [
+      { value: 70, suffix: '+', label: 'Screens and states designed' },
+      { value: 26, suffix: '', label: 'Colour tokens, AA-checked in light and dark' },
+      { value: 10, suffix: '', label: 'Component groups in the design system' },
+    ],
+    learnings:
+      'Dense products earn trust through honest states. A funnel that says “No data” and points to “Set up tracking” beats a chart that pretends, and a system built on tokens made that consistency cheap.',
+  },
   {
     slug: 'pulse',
     title: 'Pulse',
