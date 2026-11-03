@@ -126,14 +126,17 @@ export const projects = [
     approach: [
       {
         title: 'Map the loop',
+        icon: 'loop',
         text: 'Find creators, send invites, ship samples, track every sale. That loop became the spine of the product: Programs for the work, Insights for the results, and setup progress always one click away.',
       },
       {
         title: 'Design for trust',
+        icon: 'shield',
         text: 'Agents and AI do the heavy lifting, so every agent, suggestion and segment shows its status, the evidence behind it and a way for a person to step in.',
       },
       {
         title: 'Build the system',
+        icon: 'layers',
         text: '26 colour tokens checked to WCAG AA in light and dark, a type scale and ten component groups, from creator-level badges to combo charts, so 70+ screens and states read as one product.',
       },
     ],

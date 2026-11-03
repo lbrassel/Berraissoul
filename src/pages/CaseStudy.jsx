@@ -6,6 +6,7 @@ import { site } from '../content'
 import { TLink, useReadyGSAP } from '../components/Transition'
 import Counter from '../components/Counter'
 import ProjectCover from '../components/ProjectCover'
+import StepIcon, { DEFAULT_STEP_ICONS } from '../components/StepIcon'
 import ScrollHighlight from '../components/ScrollHighlight'
 import SplitReveal from '../components/SplitReveal'
 import useReveal from '../components/useReveal'
@@ -204,6 +205,9 @@ function CaseStudy({ project: p, next }) {
             {approach.map((step, i) => (
               <li key={i} data-reveal data-reveal-delay={i * 0.1}>
                 <span className="cs-step-num">{String(i + 1).padStart(2, '0')}</span>
+                <span className="cs-step-icon">
+                  <StepIcon name={step.icon || DEFAULT_STEP_ICONS[i % DEFAULT_STEP_ICONS.length]} />
+                </span>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
               </li>

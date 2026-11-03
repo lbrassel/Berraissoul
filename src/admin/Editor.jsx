@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { TABLE } from '../lib/supabase'
 import { DEFAULT_COLORS, KINDS, toProject } from '../lib/caseStudies'
+import { STEP_ICONS } from '../components/StepIcon'
 import ProjectCover from '../components/ProjectCover'
 import { explain, supabase, uploadImage } from './client'
 import { Field, ImageField, ItemControls, moveItem, Repeater } from './fields'
@@ -273,6 +274,17 @@ export default function Editor({ id }) {
               <>
                 <Field id={`${key}-title`} label="Step" value={item.title} onChange={(e) => update({ title: e.target.value })} />
                 <Field id={`${key}-text`} label="What happened" multiline rows={3} value={item.text} onChange={(e) => update({ text: e.target.value })} />
+                <div className="a-field">
+                  <label htmlFor={`${key}-icon`}>Icon</label>
+                  <select id={`${key}-icon`} value={item.icon ?? ''} onChange={(e) => update({ icon: e.target.value || undefined })}>
+                    <option value="">Default for this step</option>
+                    {Object.entries(STEP_ICONS).map(([name, label]) => (
+                      <option key={name} value={name}>
+                        {label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </>
             )}
           </Repeater>
