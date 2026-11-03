@@ -101,13 +101,14 @@ export const process = [
 ]
 
 // Each cover is drawn in code. `kind` picks the illustration:
-// 'mobile' | 'dashboard' | 'commerce' | 'system' | 'abstract'
+// 'mobile' | 'dashboard' | 'commerce' | 'system' | 'creators' (Euka) | 'academy' (UGC University) | 'abstract'
 // To use a real image instead, add `image: '/work/pulse.jpg'` (file in /public).
 
-// Euka is a real case study, written from the Euka Figma file. Pulse, Atlas, Souk
-// and Kernel below are SAMPLE projects — replace them with your real case studies.
-// TODO (Euka): confirm role and add timeline/team (hidden until filled in). The results
-// are what the product handles, from the designs; swap in real outcomes once you have them.
+// Euka and UGC University are real case studies, written from their Figma files. Pulse,
+// Atlas, Souk and Kernel below are SAMPLE projects — replace them with your real case studies.
+// TODO (Euka, UGC University): confirm role and add timeline/team (hidden until filled in).
+// The results are what the products contain, from the designs; swap in real outcomes once
+// you have them.
 export const projects = [
   {
     slug: 'euka',
@@ -243,6 +244,148 @@ export const projects = [
     ],
     learnings:
       'Automated products earn trust through honesty: a status that says what is off, a suggestion that shows its evidence, a funnel that says “No data” instead of pretending. A token-based system made that consistency cheap across every screen.',
+  },
+  {
+    slug: 'ugc-university',
+    title: 'UGC University',
+    tagline: 'A masterclass for creators.',
+    category: 'Web App · Creator education',
+    year: '2026',
+    role: 'Product Designer',
+    timeline: '',
+    team: '',
+    platform: 'Web',
+    kind: 'academy',
+    colors: { bg: '#ff6137', bg2: '#ffd9cc', ui: '#ffffff', accent: '#ff6137', ink: '#1b1714' },
+    overview:
+      'UGC University trains creators to make content brands pay for. Creators pick a coach who already sells on TikTok Shop, learn by filming real assignments, get reviewed, and graduate into paid brand partnerships. I designed the learning platform end to end, from sign-in and choosing a coach to lessons, submissions, achievements, partnerships and the graduate hub, along with the marketing site and the logo explorations.',
+    challenge:
+      'Most creator courses are a playlist and a promise: people watch, never film, and drift off long before they earn anything. The platform had to turn watching into doing, give creators a reason to come back every day, and keep the payoff, real brand deals, in sight from day one without opening it up before they are ready.',
+    quote: 'How might we turn watching tutorials into a daily habit of filming, with a brand deal at the end?',
+    approach: [
+      {
+        title: 'Follow the path',
+        icon: 'compass',
+        text: 'Choose a coach, learn, film, get reviewed, graduate, partner with brands. That path became the product: each step is a section of the sidebar, in the order a creator lives it.',
+      },
+      {
+        title: 'Make practice the product',
+        icon: 'pen',
+        text: 'Every lesson ends in something to film. Submissions, coach reviews and their statuses are first-class screens, not a comment box under a video.',
+      },
+      {
+        title: 'Reward the habit',
+        icon: 'spark',
+        text: 'XP, six levels, streaks, milestones and badges turn a long course into daily wins, and every locked thing says exactly what unlocks it.',
+      },
+    ],
+    features: [
+      {
+        eyebrow: 'Onboarding',
+        title: 'Choose a coach,',
+        em: 'not a course',
+        problem:
+          'A creator’s first decision is who to learn from. A catalogue of courses hides what matters most: whether the person teaching actually sells.',
+        images: [
+          { url: '/work/ugc-university/f-coach.webp', ratio: '1440 / 1024', alt: 'Choose your coach: eight coaches with category, brand revenue and videos created' },
+          { url: '/work/ugc-university/f-coach-intro.webp', ratio: '1440 / 1024', alt: 'A coach’s intro video, with Continue to enrol' },
+        ],
+        notes: [
+          { img: 0, x: 26.2, y: 21.2, title: 'Pick a category', text: 'Every coach is tagged with what they sell, from Fitness to Beauty & Makeup or Baby & Kids, so creators find someone in their niche.' },
+          { img: 0, x: 26.2, y: 30.3, title: 'Proof before promises', text: 'Cards lead with brand revenue and videos created: a coach’s track record, not a bio.' },
+          { img: 0, x: 90.2, y: 11.9, title: 'One choice, one button', text: 'A single selection and one Continue button keep a big decision light.' },
+          { img: 1, x: 26.5, y: 11.4, title: 'Meet them first', text: 'An intro video lets creators hear a coach’s style before they enrol.' },
+        ],
+      },
+      {
+        eyebrow: 'Lessons',
+        title: 'Every lesson ends',
+        em: 'on camera',
+        problem: 'Watching videos doesn’t make someone a creator. Filming does, and getting honest feedback on what they filmed.',
+        images: [
+          { url: '/work/ugc-university/f-lesson.webp', alt: 'A lesson: the coach’s video, a description and the assignment' },
+          { url: '/work/ugc-university/f-submitted.webp', alt: 'The same lesson after submitting, ready to resubmit' },
+        ],
+        notes: [
+          { img: 0, x: 26.5, y: 55.9, title: 'One idea per lesson', text: 'A short coach video and a single line on what it covers, like the gear you need and why a $5,000 camera isn’t on the list.' },
+          { img: 0, x: 27.6, y: 65.2, title: 'Homework you film', text: 'Each lesson ends in an assignment: questions to answer and a 20-second video, checked for audio, lighting and background.' },
+          { img: 0, x: 74.9, y: 93.2, title: 'A person reviews it', text: 'Work goes to the coach, not an auto-grader, and the button says so: Submit for review.' },
+          { img: 1, x: 28.3, y: 94.2, title: 'Status next to the fix', text: 'After submitting, answers stay readable and the status sits beside the action, so a creator can revise and resubmit in place.' },
+        ],
+      },
+      {
+        eyebrow: 'Dashboard',
+        title: 'A home that says',
+        em: 'what’s next',
+        problem: 'Between lessons, reviews and coaches, a creator needs one place that answers: how am I doing, and what should I do today?',
+        images: [{ url: '/work/ugc-university/f-dashboard.webp', alt: 'Dashboard: stats, my courses, recent submissions, streak and recent activity' }],
+        notes: [
+          { x: 17.4, y: 16.6, title: 'Four numbers that matter', text: 'Videos submitted, approval rate, average rating and leaderboard rank, at a glance.' },
+          { x: 17.4, y: 50.7, title: 'Progress in steps', text: 'Segmented bars show a course module by module, so it reads as steps to take, not a long scroll.' },
+          { x: 70.9, y: 75.6, title: 'Status in plain words', text: 'Approved, Needs changes, In review. When a coach asks for changes, the row says how many notes they left.' },
+          { x: 80.3, y: 31.3, title: 'A reason to come back', text: 'A daily streak with the week laid out and streak freezes, so one missed day doesn’t wipe out a habit.' },
+        ],
+      },
+      {
+        eyebrow: 'Achievements',
+        title: 'Progress you can',
+        em: 'feel',
+        problem: 'A course with twenty modules is a long way to go. Without small wins along the way, creators stall in the middle.',
+        images: [
+          { url: '/work/ugc-university/f-achievements-start.webp', alt: 'Achievements on day one: level 1, every milestone and badge locked' },
+          { url: '/work/ugc-university/f-achievements.webp', alt: 'Achievements a few weeks in: level 3, milestones in progress, two badges earned' },
+        ],
+        notes: [
+          { img: 0, x: 18.1, y: 17.2, title: 'Six levels, one track', text: 'Newbie to Legend, with the XP for every step and the next goal spelled out: 75 XP to Creator.' },
+          { img: 0, x: 18.8, y: 46.2, title: 'Day one isn’t empty', text: 'Before anything is earned, every milestone shows its reward and a lock, so new creators see the whole path.' },
+          { img: 1, x: 38.8, y: 47.1, title: 'Locks turn into progress', text: 'Once work starts, locks give way to progress: Module 1 · 60% done, or 2 videos in review.' },
+          { img: 1, x: 18.1, y: 78.9, title: 'Badges, dated', text: 'Earned badges light up with the date; the rest say exactly what unlocks them.' },
+        ],
+      },
+      {
+        eyebrow: 'Partnerships',
+        title: 'Graduation unlocks',
+        em: 'the brands',
+        problem:
+          'Brand deals are why creators sign up, and brands only want creators who can deliver. The deals had to be visible from day one but earned.',
+        images: [
+          { url: '/work/ugc-university/f-partnerships.webp', alt: 'Brand partnerships, each locked until you graduate' },
+          { url: '/work/ugc-university/f-graduate.webp', alt: 'Graduate hub before graduating: what unlocks, and two coaching plans' },
+        ],
+        notes: [
+          { img: 0, x: 16.7, y: 11.6, title: 'The rule, up front', text: 'Graduate to apply, then earn commission on every sale your content drives. The page opens with it.' },
+          { img: 0, x: 19.3, y: 42.7, title: 'A lock that names its key', text: 'Earnings, products and rating are visible now, and the lock says which course opens it: Graduate from Beauty & Makeup to apply.' },
+          { img: 1, x: 50.5, y: 31.5, title: 'An empty state with a way forward', text: 'Before graduation, the Graduate Hub explains what’s waiting and links straight back to choosing a coach.' },
+          { img: 1, x: 25, y: 57.6, title: 'What comes after', text: 'Graduates can keep learning: weekly group coaching, or a personal video audit from their coach.' },
+        ],
+      },
+    ],
+    explorations: {
+      eyebrow: 'Statuses',
+      title: 'One lesson,',
+      em: 'four states',
+      text: 'Every lesson card says where it stands in plain words and a colour of its own, so creators can tell at a glance what’s waiting on them and what’s waiting on their coach. Changes come with the coach’s notes, and resubmitting happens on the same page.',
+      items: [
+        { url: '/work/ugc-university/status-not-started.webp', label: 'Not started', alt: 'A lesson card at 0%, with no status yet' },
+        { url: '/work/ugc-university/status-in-review.webp', label: 'In review', alt: 'A lesson card marked In review' },
+        { url: '/work/ugc-university/status-needs-changes.webp', label: 'Needs changes', alt: 'A lesson card marked Needs changes' },
+        { url: '/work/ugc-university/status-approved.webp', label: 'Approved', alt: 'A lesson card marked Approved' },
+      ],
+    },
+    gallery: [
+      { url: '/work/ugc-university/sign-in.webp', caption: 'Sign-in: the promise and the proof first, with 125,847+ creators trained by coaches still in the game.' },
+      { url: '/work/ugc-university/courses.webp', ratio: '1440 / 1024', caption: 'Courses: one coach at a time. The others dim, and a banner says how to switch.' },
+      { url: '/work/ugc-university/submissions.webp', ratio: '1440 / 1024', caption: 'Submissions: total, approved, pending and what needs your action, above one list of work.' },
+      { url: '/work/ugc-university/coaches.webp', caption: 'Marketing site: coaches shown the way creators show up, with their niche, brand revenue and videos created.' },
+    ],
+    resultsHeading: { eyebrow: 'The product', title: 'By the', em: 'numbers' },
+    results: [
+      { value: 14, suffix: '', label: 'Screens and states, from sign-in to graduation' },
+      { value: 6, suffix: '', label: 'Creator levels, from Newbie to Legend' },
+      { value: 15, suffix: '', label: 'Milestones and badges to earn along the way' },
+    ],
+    learnings:
+      'Motivation is a design material. A streak, the next level, a lock that names its key: making progress visible kept the path clear better than any copy could. And practice needs a person on the other end. The review loop is what makes it a school, not a playlist.',
   },
   {
     slug: 'pulse',

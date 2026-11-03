@@ -47,6 +47,7 @@ const KIND_LABELS = {
   commerce: 'Shop',
   system: 'Components',
   creators: 'Creators',
+  academy: 'Academy',
   abstract: 'Abstract',
 }
 

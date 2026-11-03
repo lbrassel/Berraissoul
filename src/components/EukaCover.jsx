@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
-import { finePointer, reducedMotion } from '../lib/motion'
+import { useRef } from 'react'
+import usePointerDrift from './usePointerDrift'
 import './euka-cover.css'
 
 // The Euka cover: the dashboard, with today's widgets from the product's "Live activity"
@@ -138,29 +138,7 @@ function Dashboard() {
 export default function EukaCover() {
   const root = useRef(null)
 
-  // Pointer drift: --px/--py run from -1 to 1 across the cover.
-  useEffect(() => {
-    const el = root.current
-    const host = el?.closest('.cover')
-    if (!host || reducedMotion() || !finePointer()) return
-
-    const aim = (x, y) => {
-      el.style.setProperty('--px', x.toFixed(3))
-      el.style.setProperty('--py', y.toFixed(3))
-    }
-    const move = (e) => {
-      const r = host.getBoundingClientRect()
-      aim(((e.clientX - r.left) / r.width) * 2 - 1, ((e.clientY - r.top) / r.height) * 2 - 1)
-    }
-    const leave = () => aim(0, 0)
-
-    host.addEventListener('pointermove', move)
-    host.addEventListener('pointerleave', leave)
-    return () => {
-      host.removeEventListener('pointermove', move)
-      host.removeEventListener('pointerleave', leave)
-    }
-  }, [])
+  usePointerDrift(root)
 
   return (
     <div className="eu" ref={root}>
