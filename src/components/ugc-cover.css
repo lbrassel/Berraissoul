@@ -1,0 +1,549 @@
+/* UGC University cover — a lesson from the course player with the streak, an approved
+   video and the level track floating off it. Drawn on a centred 100 × 80cqw board, like
+   the Euka cover, so it fits the 5:4 work card and the 16:9 case-study frame alike. Every
+   direct child drifts with the pointer by its depth --d, plus a hover offset (--hx, --hy). */
+
+.cover--academy {
+  background: #f6efe9;
+}
+
+.cover--academy .cover-art {
+  background:
+    radial-gradient(circle at 86% 10%, rgba(255, 97, 55, 0.32) 0, transparent 42%),
+    radial-gradient(circle at 8% 96%, rgba(255, 97, 55, 0.18) 0, transparent 45%),
+    linear-gradient(150deg, #fbf7f3, #f3e9e1);
+}
+
+.ug {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100cqw;
+  height: 80cqw;
+  margin: -40cqw 0 0 -50cqw;
+  color: var(--ug-ink);
+  --ug-orange: #ff6137;
+  --ug-peach: #ffefeb;
+  --ug-ink: #141210;
+  --ug-dark: #2b2825;
+  --ug-muted: #8a857f;
+  --ug-line: #eeebe7;
+  --ug-lime: #99ff99;
+  --ug-lime-soft: #dffaac;
+  --ug-best: #a6dd00;
+  --ug-shadow: 0 2.4cqw 5cqw -1.6cqw rgba(70, 30, 10, 0.32);
+}
+
+.ug > * {
+  position: absolute;
+  translate:
+    calc(var(--px, 0) * var(--d, 1) * 1cqw + var(--hx, 0cqw))
+    calc(var(--py, 0) * var(--d, 1) * 1cqw + var(--hy, 0cqw));
+  transition:
+    translate 0.6s var(--ease-out),
+    scale 0.9s var(--ease-out),
+    rotate 0.9s var(--ease-out);
+}
+
+.uw-ico {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.uw-ico.uw-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* ── Lesson ───────────────────────────────────────────────────────────────── */
+
+.ug-lesson {
+  left: 12cqw;
+  top: 14cqw;
+  width: 56cqw;
+}
+
+.ug-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5cqw;
+  padding: 1.9cqw;
+  border-radius: 2.2cqw;
+  background: #fff;
+  box-shadow: var(--ug-shadow);
+  transform: perspective(160cqw) rotateY(-7deg) rotateX(4deg);
+  transition: transform 1s var(--ease-out);
+}
+
+.ug-head {
+  display: flex;
+  align-items: center;
+  gap: 1.2cqw;
+  min-width: 0;
+}
+
+.ug-head b {
+  overflow: hidden;
+  font-size: 2.3cqw;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ug-chip {
+  flex: none;
+  padding: 0.35cqw 0.9cqw;
+  border-radius: 99px;
+  background: var(--ug-lime);
+  font-size: 1.1cqw;
+  font-weight: 500;
+}
+
+.ug-video {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1478 / 700;
+  border-radius: 1.5cqw;
+  background: #3a3530;
+}
+
+.ug-video img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ug-video::after {
+  content: '';
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.62));
+}
+
+.ug-play {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  display: grid;
+  place-items: center;
+  width: 5.4cqw;
+  aspect-ratio: 1;
+  margin: -2.7cqw 0 0 -2.7cqw;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ug-ink);
+  font-size: 2.3cqw;
+  box-shadow: 0 1cqw 2.4cqw rgba(0, 0, 0, 0.25);
+  transition: scale 0.6s var(--ease-out);
+}
+
+.ug-play .uw-ico {
+  margin-left: 0.3cqw;
+}
+
+.ug-bar {
+  position: absolute;
+  left: 2.2cqw;
+  right: 2.2cqw;
+  bottom: 1.8cqw;
+  z-index: 1;
+  color: #fff;
+}
+
+.ug-bar span {
+  display: block;
+  margin-bottom: 0.9cqw;
+  font-size: 1.25cqw;
+  text-align: right;
+  opacity: 0.85;
+}
+
+.ug-bar i {
+  display: block;
+  height: 0.35cqw;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #fff 66%, rgba(255, 255, 255, 0.35) 0);
+}
+
+.ug-foot {
+  display: flex;
+  align-items: center;
+  gap: 1.1cqw;
+}
+
+.ug-face {
+  width: 3.6cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ug-coach b,
+.ug-coach small {
+  display: block;
+  white-space: nowrap;
+}
+
+.ug-coach b {
+  font-size: 1.45cqw;
+  font-weight: 500;
+}
+
+.ug-coach small {
+  margin-top: 0.2cqw;
+  font-size: 1.1cqw;
+  color: var(--ug-muted);
+}
+
+.ug-mods {
+  display: flex;
+  gap: 0.55cqw;
+  margin-left: 3cqw;
+}
+
+.ug-mods i {
+  width: 0.9cqw;
+  height: 2.1cqw;
+  border-radius: 99px;
+  background: #ecebe8;
+}
+
+.ug-mods i.is-done {
+  background: var(--ug-orange);
+}
+
+.ug-pct {
+  font-size: 1.35cqw;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Widgets ──────────────────────────────────────────────────────────────── */
+
+.uw {
+  border-radius: 1.9cqw;
+  box-shadow: var(--ug-shadow);
+}
+
+.uw-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1cqw;
+}
+
+/* Approved video */
+
+.uw-toast {
+  display: flex;
+  align-items: center;
+  gap: 1.4cqw;
+  padding: 1.4cqw 2cqw 1.4cqw 1.4cqw;
+  background: #fff;
+  white-space: nowrap;
+}
+
+.uw-tile {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 4.4cqw;
+  aspect-ratio: 1;
+  border-radius: 1.1cqw;
+  background: var(--ug-lime-soft);
+  color: #3f7100;
+  font-size: 2.2cqw;
+}
+
+.uw-toast b {
+  display: block;
+  font-size: 1.6cqw;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.uw-toast small {
+  display: block;
+  margin-top: 0.3cqw;
+  font-size: 1.2cqw;
+  color: var(--ug-muted);
+}
+
+.uw-xp {
+  margin-left: 0.6cqw;
+  padding: 0.5cqw 1cqw;
+  border-radius: 99px;
+  background: var(--ug-orange);
+  color: #fff;
+  font-size: 1.3cqw;
+  font-weight: 600;
+}
+
+/* Streak */
+
+.uw-streak {
+  width: 28cqw;
+  padding: 2cqw 2.1cqw 2.2cqw;
+  background: var(--ug-dark);
+  color: #fff;
+}
+
+.uw-streak .uw-row {
+  font-size: 1.6cqw;
+}
+
+.uw-best {
+  padding: 0.35cqw 0.9cqw;
+  border-radius: 99px;
+  background: var(--ug-best);
+  color: var(--ug-ink);
+  font-size: 1.1cqw;
+  font-weight: 500;
+}
+
+.uw-count {
+  display: flex;
+  align-items: center;
+  gap: 1.3cqw;
+  margin-top: 1.6cqw;
+}
+
+.uw-flame {
+  display: grid;
+  place-items: center;
+  width: 4.8cqw;
+  aspect-ratio: 1;
+  border-radius: 1.1cqw;
+  background: #5a2a1b;
+  color: var(--ug-orange);
+  font-size: 2.8cqw;
+}
+
+.uw-count b {
+  display: block;
+  font-size: 3.6cqw;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.uw-count small {
+  display: block;
+  margin-top: 0.3cqw;
+  font-size: 1.15cqw;
+  color: #a39d96;
+}
+
+.uw-week {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.8cqw 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.uw-week li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6cqw;
+  font-size: 1.1cqw;
+  color: #d9d4ce;
+}
+
+.uw-week li span {
+  display: grid;
+  place-items: center;
+  width: 2.3cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #4a4540;
+  color: #fff;
+  font-size: 1.3cqw;
+}
+
+.uw-week li.is-done span {
+  background: var(--ug-orange);
+}
+
+.uw-week li.is-freeze span {
+  background: #3d4a66;
+  color: #a9c5ff;
+}
+
+.uw-week li.is-today span {
+  background: none;
+  border: 0.2cqw dashed var(--ug-orange);
+}
+
+/* Level */
+
+.uw-level {
+  width: 40cqw;
+  padding: 2cqw 2.2cqw 2.4cqw;
+  background: #fff;
+}
+
+.uw-avatar {
+  width: 4cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #d9f0b0;
+}
+
+.uw-lv {
+  padding: 0.5cqw 1.1cqw;
+  border-radius: 99px;
+  background: var(--ug-lime);
+  font-size: 1.3cqw;
+  font-weight: 500;
+}
+
+.uw-xp-line {
+  margin-top: 1.4cqw;
+  font-size: 1.4cqw;
+  color: var(--ug-muted);
+}
+
+.uw-xp-line b {
+  font-size: 2.4cqw;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--ug-ink);
+}
+
+.uw-track {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2cqw;
+}
+
+.uw-track::before,
+.uw-fill-line {
+  content: '';
+  position: absolute;
+  left: 0.8cqw;
+  right: 0.8cqw;
+  top: 50%;
+  height: 0.5cqw;
+  margin-top: -0.25cqw;
+  border-radius: 99px;
+  background: #ecebe8;
+}
+
+.uw-fill-line {
+  right: auto;
+  width: 39%;
+  background: var(--ug-orange);
+  transform-origin: left;
+}
+
+.uw-track span {
+  position: relative;
+  width: 1.7cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: inset 0 0 0 0.3cqw #dcd9d4;
+}
+
+.uw-track span.is-on {
+  box-shadow: inset 0 0 0 0.35cqw var(--ug-orange);
+}
+
+/* ── Placement and motion ─────────────────────────────────────────────────── */
+
+.ug-toast {
+  left: 46cqw;
+  top: 6cqw;
+  --d: 3;
+  animation: uw-bob 4.6s ease-in-out infinite alternate;
+}
+
+.ug-streak {
+  left: 66cqw;
+  top: 43cqw;
+  --d: 2.4;
+}
+
+.ug-level {
+  left: 5cqw;
+  top: 51cqw;
+  --d: 2.2;
+}
+
+/* Hover: the lesson settles flat, the widgets spread, the progress fills */
+
+.cover-host:hover .ug-card {
+  transform: perspective(160cqw) rotateY(-2deg) rotateX(1deg) scale(1.02);
+}
+
+.cover-host:hover .ug-play {
+  scale: 1.12;
+}
+
+.cover-host:hover .ug-toast {
+  --hx: 1.2cqw;
+  --hy: -1cqw;
+  scale: 1.06;
+}
+
+.cover-host:hover .ug-streak {
+  --hx: 1.4cqw;
+  --hy: 1cqw;
+  rotate: 2deg;
+}
+
+.cover-host:hover .ug-level {
+  --hx: -1.4cqw;
+  --hy: 1cqw;
+  rotate: -2deg;
+}
+
+.cover-host:hover .ug-mods i.is-done,
+.cover-host:hover .uw-week li.is-done span {
+  animation: uw-pop 0.6s var(--ease-out) both;
+  animation-delay: calc(var(--i) * 70ms);
+}
+
+.cover-host:hover .uw-fill-line {
+  animation: uw-fill 1.2s var(--ease-out) both;
+}
+
+@keyframes uw-bob {
+  to {
+    transform: translateY(-1cqw);
+  }
+}
+
+@keyframes uw-pop {
+  from {
+    scale: 0.3;
+    opacity: 0.2;
+  }
+}
+
+@keyframes uw-fill {
+  from {
+    transform: scaleX(0.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ug-toast,
+  .cover-host:hover .ug-mods i.is-done,
+  .cover-host:hover .uw-week li.is-done span,
+  .cover-host:hover .uw-fill-line {
+    animation: none;
+  }
+}
