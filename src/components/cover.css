@@ -738,17 +738,18 @@
 }
 
 /* ── Creators ────────────────────────────────────────────────────────── */
-/* Four layers (orbit, card, chip, GMV) that drift with the pointer (--px/--py, set in
-   ProjectCover.jsx) and settle into place on hover. */
+/* A dashboard window of widgets, with a creator and a brand either side of it and a sale
+   flowing between them. Layers drift with the pointer (--px/--py, set in ProjectCover.jsx)
+   and spread apart on hover. Drawn on a 100 × 80cqw board and centred, so it also fits the
+   wide 16:9 case-study frame. */
 
-/* Drawn on a 100 × 80cqw board and centred, so it also fits the wide 16:9 case-study frame. */
 .cv-eu {
   position: absolute;
-  left: 0;
+  left: 50%;
   top: 50%;
-  width: 100%;
+  width: 100cqw;
   height: 80cqw;
-  margin-top: -40cqw;
+  margin: -40cqw 0 0 -50cqw;
 }
 
 .cv-eu > * {
@@ -759,69 +760,243 @@
     rotate 0.9s var(--ease-out);
 }
 
-.cv-eu-orbit {
-  left: 20cqw;
-  top: 10cqw;
-  width: 60cqw;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 0.3cqw solid var(--ink-25);
-  translate: calc(var(--px, 0) * -1.4cqw) calc(var(--py, 0) * -1.4cqw);
-  animation: cv-eu-spin 46s linear infinite;
+/* The window (tilted in 3D, so the drift lives on its wrapper) */
+
+.cv-eu-dash {
+  left: 15cqw;
+  top: 15cqw;
+  width: 70cqw;
+  height: 46cqw;
+  translate: calc(var(--px, 0) * 1.2cqw) calc(var(--py, 0) * 1.2cqw);
 }
 
-.cv-eu-orbit i {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  box-sizing: border-box;
-  width: 5.4cqw;
-  aspect-ratio: 1;
-  margin: -2.7cqw 0 0 -2.7cqw;
-  border-radius: 50%;
-  border: 0.55cqw solid var(--c-ui);
+.cv-eu-win {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 9cqw 1fr;
+  border-radius: 2.2cqw;
+  background: var(--c-ui);
   box-shadow: var(--shadow);
+  overflow: hidden;
+  transform: perspective(140cqw) rotateY(-9deg) rotateX(6deg) rotateZ(1.5deg);
+  transition: transform 1s var(--ease-out);
 }
 
-.cv-eu-orbit i:nth-child(1) {
-  translate: 0 -30cqw;
+.cv-eu-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5cqw;
+  padding: 2.2cqw 1.8cqw;
+  border-right: 1px solid var(--ink-10);
+}
+
+.cv-eu-mark {
+  width: 3.2cqw;
+  aspect-ratio: 1;
+  margin-bottom: 1cqw;
+  border-radius: 1cqw;
   background: var(--c-accent);
 }
 
-.cv-eu-orbit i:nth-child(2) {
-  translate: 26cqw 15cqw;
+.cv-eu-side i {
+  display: block;
+  height: 1cqw;
+  border-radius: 99px;
+  background: var(--ink-15);
+}
+
+.cv-eu-side i.is-active {
   background: var(--c-ink);
 }
 
-.cv-eu-orbit i:nth-child(3) {
-  translate: -26cqw 15cqw;
-  background: var(--c-ui);
-  border-color: var(--c-ink);
-}
-
-.cv-eu-card {
-  left: 35cqw;
-  top: 29.5cqw;
-  width: 30cqw;
+.cv-eu-main {
   display: flex;
   flex-direction: column;
+  gap: 1.8cqw;
+  padding: 2.4cqw 2.6cqw;
+  min-width: 0;
+}
+
+.cv-eu-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6cqw;
+}
+
+.cv-eu-kpis div,
+.cv-eu-chart,
+.cv-eu-funnel {
+  border-radius: 1.4cqw;
+  box-shadow: inset 0 0 0 1px var(--ink-10);
+}
+
+.cv-eu-kpis div {
+  padding: 1.4cqw 1.7cqw;
+}
+
+.cv-eu-kpis small,
+.cv-eu-funnel small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.1cqw;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  opacity: 0.55;
+}
+
+.cv-eu-kpis b {
+  display: block;
+  margin-top: 0.5cqw;
+  font-size: 3cqw;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: var(--c-ink);
+}
+
+.cv-eu-panels {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 1.6cqw;
+  min-height: 0;
+}
+
+.cv-eu-chart {
+  display: flex;
+  align-items: flex-end;
+  padding: 1.4cqw;
+  overflow: hidden;
+}
+
+.cv-eu-chart svg {
+  display: block;
+  width: 100%;
+  aspect-ratio: 100 / 90;
+  height: auto;
+  overflow: visible;
+}
+
+.cv-eu-area {
+  fill: var(--ink-5);
+}
+
+.cv-eu-trend {
+  fill: none;
+  stroke: var(--c-accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.cv-eu-funnel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   gap: 1.1cqw;
-  padding: 2.2cqw;
-  border-radius: 2.4cqw;
+  padding: 1.4cqw 1.7cqw;
+}
+
+.cv-eu-funnel small {
+  margin-bottom: 0.4cqw;
+}
+
+.cv-eu-funnel i {
+  display: block;
+  width: var(--w);
+  height: 1.7cqw;
+  border-radius: 99px;
+  background: var(--c-accent);
+  transform-origin: left;
+}
+
+.cv-eu-funnel i:nth-of-type(2) {
+  opacity: 0.75;
+}
+
+.cv-eu-funnel i:nth-of-type(3) {
+  opacity: 0.5;
+}
+
+.cv-eu-funnel i:nth-of-type(4) {
+  background: var(--c-ink);
+}
+
+/* The sale flowing from creator to brand */
+
+.cv-eu-link {
+  left: 0;
+  top: 0;
+  width: 100cqw;
+  height: 80cqw;
+  overflow: visible;
+  translate: calc(var(--px, 0) * 2cqw) calc(var(--py, 0) * 2cqw);
+}
+
+.cv-eu-link path {
+  fill: none;
+  stroke: var(--c-ink);
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1.2 1.6;
+  animation: cv-eu-flow 1.6s linear infinite;
+}
+
+/* Creator and brand widgets */
+
+.cv-eu-creator,
+.cv-eu-brand {
+  width: 27cqw;
+  translate: calc(var(--px, 0) * 3cqw + var(--hx, 0cqw)) calc(var(--py, 0) * 3cqw + var(--hy, 0cqw));
+}
+
+.cv-eu-creator {
+  left: 7cqw;
+  top: 47cqw;
+}
+
+.cv-eu-brand {
+  left: 66cqw;
+  top: 8cqw;
+}
+
+.cv-eu-w {
+  padding: 1.8cqw;
+  border-radius: 2cqw;
   background: var(--c-ui);
   box-shadow: var(--shadow);
-  translate: calc(var(--px, 0) * 1cqw) calc(var(--py, 0) * 1cqw);
+  animation: cv-eu-bob 5.2s ease-in-out infinite alternate;
 }
 
-.cv-eu-card .cv-big {
-  font-size: 5.6cqw;
+.cv-eu-brand .cv-eu-w {
+  background: var(--c-ink);
+  animation-duration: 6s;
+  animation-delay: -2.4s;
 }
 
-.cv-eu-head {
+.cv-eu-tag {
+  margin-bottom: 1.3cqw;
+  font-family: var(--font-mono);
+  font-size: 1.2cqw;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  opacity: 0.55;
+}
+
+.cv-eu-brand .cv-eu-tag {
+  color: var(--c-bg);
+  opacity: 0.85;
+}
+
+.cv-eu-who {
   display: flex;
   align-items: center;
-  gap: 1.2cqw;
-  margin-bottom: 0.8cqw;
+  gap: 1.3cqw;
 }
 
 .cv-eu-level {
@@ -835,30 +1010,33 @@
   font-weight: 600;
 }
 
-.cv-eu-meter {
-  display: block;
-  height: 0.9cqw;
-  margin-top: 0.6cqw;
-  border-radius: 99px;
-  background: var(--ink-10);
-  overflow: hidden;
+.cv-eu-logo {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 4.6cqw;
+  aspect-ratio: 1;
+  border-radius: 1.3cqw;
+  background: var(--c-bg);
 }
 
-.cv-eu-meter i {
-  display: block;
-  width: 68%;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--c-accent);
-  transform-origin: left;
-  transition: transform 1s var(--ease-out);
+.cv-eu-logo::after {
+  content: '';
+  width: 1.9cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--c-ink);
+}
+
+.cv-eu-brand .cv-lines i {
+  background: color-mix(in srgb, var(--c-ui) 30%, transparent);
 }
 
 .cv-eu-chip {
-  left: 57cqw;
-  top: 15cqw;
-  rotate: -6deg;
-  translate: calc(var(--px, 0) * 3cqw) calc(var(--py, 0) * 3cqw);
+  left: 36cqw;
+  top: 35cqw;
+  rotate: -5deg;
+  translate: calc(var(--px, 0) * 2.4cqw) calc(var(--py, 0) * 2.4cqw);
 }
 
 .cv-eu-chip-in {
@@ -874,7 +1052,7 @@
   letter-spacing: -0.01em;
   white-space: nowrap;
   box-shadow: var(--shadow);
-  animation: cv-eu-bob 4.6s ease-in-out infinite alternate;
+  animation: cv-eu-bob 4.6s ease-in-out -1.2s infinite alternate;
 }
 
 .cv-eu-chip-in b {
@@ -886,99 +1064,54 @@
   box-shadow: 0 0 0 0.5cqw color-mix(in srgb, var(--c-bg) 28%, transparent);
 }
 
-.cv-eu-gmv {
-  left: 9cqw;
-  top: 49cqw;
-  width: 25cqw;
-  translate: calc(var(--px, 0) * 2.2cqw) calc(var(--py, 0) * 2.2cqw);
+/* Hover: the window settles flat, the widgets spread out and the numbers redraw */
+
+.cover-host:hover .cv-eu-win {
+  transform: perspective(140cqw) rotateY(-3deg) rotateX(2deg) rotateZ(0deg) scale(1.03);
 }
 
-.cv-eu-gmv-in {
-  padding: 2cqw;
-  border-radius: 2.2cqw;
-  background: var(--c-ink);
-  color: var(--c-ui);
-  box-shadow: var(--shadow);
-  animation: cv-eu-bob 5.8s ease-in-out -2.4s infinite alternate;
-}
-
-.cv-eu-gmv-label {
-  font-family: var(--font-mono);
-  font-size: 1.3cqw;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--c-bg) 80%, transparent);
-}
-
-.cv-eu-gmv-value {
-  display: flex;
-  align-items: baseline;
-  gap: 1cqw;
-  margin-top: 0.8cqw;
-  font-size: 4.4cqw;
-  font-weight: 600;
-  letter-spacing: -0.05em;
-  line-height: 1;
-}
-
-.cv-eu-gmv-value small {
-  padding: 0.4cqw 0.9cqw;
-  border-radius: 99px;
-  background: var(--c-bg);
-  color: var(--c-ink);
-  font-size: 1.5cqw;
-  letter-spacing: 0;
-}
-
-.cv-eu-gmv svg {
-  display: block;
-  width: 100%;
-  aspect-ratio: 100 / 28;
-  height: auto;
-  margin-top: 1.4cqw;
-  overflow: visible;
-}
-
-.cv-eu-line {
-  fill: none;
-  stroke: var(--c-bg);
-  stroke-width: 2.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 0;
-}
-
-.cover-host:hover .cv-eu-orbit {
-  scale: 1.07;
-}
-
-.cover-host:hover .cv-eu-card {
+.cover-host:hover .cv-eu-creator {
+  --hx: -1.5cqw;
+  --hy: 1.2cqw;
   scale: 1.05;
   rotate: -1.5deg;
 }
 
-.cover-host:hover .cv-eu-meter i {
-  transform: scaleX(1.25);
-}
-
-.cover-host:hover .cv-eu-chip {
-  scale: 1.1;
-  rotate: -2deg;
-}
-
-.cover-host:hover .cv-eu-gmv {
-  scale: 1.06;
+.cover-host:hover .cv-eu-brand {
+  --hx: 1.5cqw;
+  --hy: -1.2cqw;
+  scale: 1.05;
   rotate: 1.5deg;
 }
 
-.cover-host:hover .cv-eu-line {
+.cover-host:hover .cv-eu-chip {
+  scale: 1.12;
+  rotate: -2deg;
+}
+
+.cover-host:hover .cv-eu-trend {
   animation: cv-eu-draw 1.2s var(--ease-out) both;
 }
 
-@keyframes cv-eu-spin {
+.cover-host:hover .cv-eu-funnel i {
+  animation: cv-eu-grow 0.9s var(--ease-out) both;
+}
+
+.cover-host:hover .cv-eu-funnel i:nth-of-type(2) {
+  animation-delay: 0.08s;
+}
+
+.cover-host:hover .cv-eu-funnel i:nth-of-type(3) {
+  animation-delay: 0.16s;
+}
+
+.cover-host:hover .cv-eu-funnel i:nth-of-type(4) {
+  animation-delay: 0.24s;
+}
+
+@keyframes cv-eu-flow {
   to {
-    rotate: 360deg;
+    stroke-dashoffset: -2.8;
   }
 }
 
@@ -991,6 +1124,12 @@
 @keyframes cv-eu-draw {
   from {
     stroke-dashoffset: 1;
+  }
+}
+
+@keyframes cv-eu-grow {
+  from {
+    transform: scaleX(0);
   }
 }
 

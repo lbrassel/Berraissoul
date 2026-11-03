@@ -8,7 +8,12 @@ import './cover.css'
 
 const bars = [42, 64, 38, 80, 56, 92, 70, 48]
 const line = 'M0 70 C 40 60, 60 20, 100 34 S 170 70, 210 40 S 280 10, 320 22'
-const spark = 'M0 24 C 10 22, 16 26, 26 18 S 44 20, 54 12 S 78 15, 88 6 S 96 3, 100 2'
+const trend = 'M0 68 C 12 64, 18 28, 30 36 S 50 74, 62 48 S 86 14, 100 22'
+const kpis = [
+  ['GMV', '$130K'],
+  ['Orders', '5.3K'],
+  ['Videos', '2.6K'],
+]
 
 function Phone({ className = '', children }) {
   return (
@@ -189,7 +194,7 @@ function System() {
   )
 }
 
-// A creator card orbited by creators, with a sale landing and the day's GMV.
+// A dashboard of widgets with a creator and a brand either side of it, linked by a sale.
 // The layers drift with the pointer, each at its own depth.
 function Creators() {
   const root = useRef(null)
@@ -219,26 +224,70 @@ function Creators() {
 
   return (
     <div className="cv-eu" ref={root}>
-      <div className="cv-eu-orbit">
-        <i />
-        <i />
-        <i />
+      <div className="cv-eu-dash">
+        <div className="cv-eu-win">
+          <aside className="cv-eu-side">
+            <span className="cv-eu-mark" />
+            {[0, 1, 2, 3].map((i) => (
+              <i key={i} className={i === 0 ? 'is-active' : ''} />
+            ))}
+          </aside>
+          <div className="cv-eu-main">
+            <div className="cv-eu-kpis">
+              {kpis.map(([label, value]) => (
+                <div key={label}>
+                  <small>{label}</small>
+                  <b>{value}</b>
+                </div>
+              ))}
+            </div>
+            <div className="cv-eu-panels">
+              <div className="cv-eu-chart">
+                <svg viewBox="0 0 100 90" aria-hidden="true">
+                  <path d={`${trend} L100 90 L0 90 Z`} className="cv-eu-area" />
+                  <path d={trend} pathLength="1" className="cv-eu-trend" />
+                </svg>
+              </div>
+              <div className="cv-eu-funnel">
+                <small>Funnel</small>
+                {[100, 72, 46, 28].map((w, i) => (
+                  <i key={i} style={{ '--w': `${w}%` }} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="cv-eu-card">
-        <div className="cv-eu-head">
-          <span className="cv-avatar is-accent" />
-          <span className="cv-lines">
-            <i style={{ width: '62%' }} />
-            <i style={{ width: '36%' }} />
-          </span>
-          <span className="cv-eu-level">L6</span>
+      <svg className="cv-eu-link" viewBox="0 0 100 80" aria-hidden="true">
+        <path d="M22 54 C 44 62, 46 18, 78 15" />
+      </svg>
+
+      <div className="cv-eu-creator">
+        <div className="cv-eu-w">
+          <p className="cv-eu-tag">Creator</p>
+          <div className="cv-eu-who">
+            <span className="cv-avatar is-accent" />
+            <span className="cv-lines">
+              <i style={{ width: '70%' }} />
+              <i style={{ width: '40%' }} />
+            </span>
+            <span className="cv-eu-level">L6</span>
+          </div>
         </div>
-        <p className="cv-label">GMV · 30 days</p>
-        <p className="cv-big">$742K</p>
-        <span className="cv-eu-meter">
-          <i />
-        </span>
+      </div>
+
+      <div className="cv-eu-brand">
+        <div className="cv-eu-w">
+          <p className="cv-eu-tag">Brand</p>
+          <div className="cv-eu-who">
+            <span className="cv-eu-logo" />
+            <span className="cv-lines">
+              <i style={{ width: '70%' }} />
+              <i style={{ width: '40%' }} />
+            </span>
+          </div>
+        </div>
       </div>
 
       <div className="cv-eu-chip">
@@ -246,18 +295,6 @@ function Creators() {
           <b />
           New order · +$48
         </span>
-      </div>
-
-      <div className="cv-eu-gmv">
-        <div className="cv-eu-gmv-in">
-          <p className="cv-eu-gmv-label">GMV today</p>
-          <p className="cv-eu-gmv-value">
-            $4,820<small>+24%</small>
-          </p>
-          <svg viewBox="0 0 100 28" aria-hidden="true">
-            <path d={spark} pathLength="1" className="cv-eu-line" />
-          </svg>
-        </div>
       </div>
     </div>
   )
