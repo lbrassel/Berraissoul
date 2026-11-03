@@ -204,10 +204,10 @@ function CaseStudy({ project: p, next }) {
           <ol className="cs-steps">
             {approach.map((step, i) => (
               <li key={i} data-reveal data-reveal-delay={i * 0.1}>
-                <span className="cs-step-num">{String(i + 1).padStart(2, '0')}</span>
                 <span className="cs-step-icon">
                   <StepIcon name={step.icon || DEFAULT_STEP_ICONS[i % DEFAULT_STEP_ICONS.length]} />
                 </span>
+                <span className="cs-step-num">{String(i + 1).padStart(2, '0')}</span>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
               </li>
