@@ -7,6 +7,7 @@
   display: grid;
   place-items: center;
   padding: var(--gutter);
+  will-change: transform;
 }
 
 .pl-meta {
@@ -31,50 +32,38 @@
   right: var(--gutter);
 }
 
-.pl-name {
+.pl-greeting {
   display: flex;
+  align-items: center;
+  gap: 0.2em;
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(5rem, 22vw, 20rem);
-  line-height: 0.9;
+  font-size: clamp(3.5rem, 12vw, 10rem);
+  line-height: 1.1;
   letter-spacing: -0.03em;
 }
 
-.pl-char-mask {
+.pl-dot {
+  flex: none;
+  width: 0.17em;
+  height: 0.17em;
+  margin-top: 0.1em;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.pl-word {
   display: inline-block;
-  overflow: clip;
-  padding: 0.04em 0.03em 0.12em;
 }
 
-.pl-char {
-  display: inline-block;
-}
-
-.pl-foot {
-  position: absolute;
-  left: var(--gutter);
-  right: var(--gutter);
-  bottom: calc(var(--gutter) + 14px);
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-.pl-count {
-  font-family: var(--font-mono);
-  font-size: clamp(2.5rem, 7vw, 5.5rem);
-  line-height: 0.8;
-  letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums;
-}
-
-.pl-bar {
+/* Hangs just below the overlay; the bowed edge only shows once the curtain lifts. */
+.pl-curve {
   position: absolute;
   left: 0;
-  right: 0;
-  bottom: 0;
-  height: 3px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
+  top: 100%;
+  width: 100%;
+  height: clamp(40px, 12vh, 140px);
+  display: block;
+  fill: var(--bg-2);
+  pointer-events: none;
 }
