@@ -358,15 +358,15 @@ export const projects = [
       },
     ],
     explorations: {
-      title: 'Five marks for',
-      em: 'the university',
-      text: 'The brand needed a mark that reads as both a school and short-form video, so I explored shields, play buttons, a mortarboard and a crown in the brand’s orange.',
+      title: 'Five ways to say',
+      em: 'not yet',
+      text: 'A learning product spends a lot of time saying “not yet”. Every empty, locked and error state says why, and what to do next, so a creator never hits a dead end.',
       items: [
-        { url: '/work/ugc-university/logo-a.webp', label: 'Shield and play' },
-        { url: '/work/ugc-university/logo-b.webp', label: 'Shield monogram' },
-        { url: '/work/ugc-university/logo-c.webp', label: 'Mortarboard' },
-        { url: '/work/ugc-university/logo-d.webp', label: 'Play' },
-        { url: '/work/ugc-university/logo-e.webp', label: 'Crown' },
+        { url: '/work/ugc-university/state-milestones.webp', label: 'Locked milestones', alt: 'Milestones and badges, each with its reward and a lock' },
+        { url: '/work/ugc-university/state-brand.webp', label: 'Locked brand deal', alt: 'A brand card: Graduate from Beauty & Makeup to apply' },
+        { url: '/work/ugc-university/state-coach.webp', label: 'One coach at a time', alt: 'Other coaches dimmed, with a banner on how to switch' },
+        { url: '/work/ugc-university/state-graduate.webp', label: 'Not graduated yet', alt: 'Graduate hub empty state with a link back to choosing a coach' },
+        { url: '/work/ugc-university/state-404.webp', label: 'Page not found', alt: 'Page not found, with a way back to the home page' },
       ],
     },
     gallery: [

@@ -51,7 +51,7 @@ create table if not exists public.case_studies (
   results jsonb not null default '[]',    -- [{ "value", "suffix", "label", "decimals" }]
   gallery jsonb not null default '[]',    -- [{ "url", "caption", "ratio" }]
   features jsonb not null default '[]',   -- [{ "eyebrow", "title", "em", "problem", "images": [{ "url", "alt", "ratio" }], "notes": [{ "x", "y", "img", "title", "text" }] }]
-  explorations jsonb,                     -- { "title", "em", "text", "items": [{ "url", "label", "note" }] }
+  explorations jsonb,                     -- { "title", "em", "text", "items": [{ "url", "label", "note", "alt" }] }
   results_heading jsonb,                  -- { "eyebrow", "title", "em" }
   learnings text not null default '',
   position integer not null default 0,
