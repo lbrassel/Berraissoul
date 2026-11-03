@@ -358,15 +358,15 @@ export const projects = [
       },
     ],
     explorations: {
-      title: 'Five ways to say',
-      em: 'not yet',
-      text: 'A learning product spends a lot of time saying “not yet”. Every empty, locked and error state says why, and what to do next, so a creator never hits a dead end.',
+      eyebrow: 'Statuses',
+      title: 'One lesson,',
+      em: 'four states',
+      text: 'Every lesson card says where it stands in plain words and a colour of its own, so creators can tell at a glance what’s waiting on them and what’s waiting on their coach. Changes come with the coach’s notes, and resubmitting happens on the same page.',
       items: [
-        { url: '/work/ugc-university/state-milestones.webp', label: 'Locked milestones', alt: 'Milestones and badges, each with its reward and a lock' },
-        { url: '/work/ugc-university/state-brand.webp', label: 'Locked brand deal', alt: 'A brand card: Graduate from Beauty & Makeup to apply' },
-        { url: '/work/ugc-university/state-coach.webp', label: 'One coach at a time', alt: 'Other coaches dimmed, with a banner on how to switch' },
-        { url: '/work/ugc-university/state-graduate.webp', label: 'Not graduated yet', alt: 'Graduate hub empty state with a link back to choosing a coach' },
-        { url: '/work/ugc-university/state-404.webp', label: 'Page not found', alt: 'Page not found, with a way back to the home page' },
+        { url: '/work/ugc-university/status-not-started.webp', label: 'Not started', alt: 'A lesson card at 0%, with no status yet' },
+        { url: '/work/ugc-university/status-in-review.webp', label: 'In review', alt: 'A lesson card marked In review' },
+        { url: '/work/ugc-university/status-needs-changes.webp', label: 'Needs changes', alt: 'A lesson card marked Needs changes' },
+        { url: '/work/ugc-university/status-approved.webp', label: 'Approved', alt: 'A lesson card marked Approved' },
       ],
     },
     gallery: [

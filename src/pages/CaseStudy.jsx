@@ -264,7 +264,7 @@ function CaseStudy({ project: p, next }) {
       {explorations.length > 0 && (
         <section className="cs-section wrap" aria-label="Explorations">
           <div className="cs-split cs-split--head">
-            <p className="eyebrow">Explorations</p>
+            <p className="eyebrow">{p.explorations.eyebrow || 'Explorations'}</p>
             <div>
               <SplitReveal as="h2" className="cs-h2">
                 {p.explorations.title} {p.explorations.em && <em>{p.explorations.em}</em>}
@@ -276,7 +276,7 @@ function CaseStudy({ project: p, next }) {
               )}
             </div>
           </div>
-          <div className="cs-explore">
+          <div className="cs-explore" style={{ '--cols': Math.min(explorations.length, 5) }}>
             {explorations.map((x, i) => (
               <figure className={`cs-explore-item${x.note ? ' is-chosen' : ''}`} key={x.url} data-reveal data-reveal-delay={i * 0.06}>
                 <div className="cs-explore-img">
