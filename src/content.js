@@ -13,6 +13,9 @@ export const site = {
   timezone: 'Africa/Casablanca', // used for the live clock
   availability: 'Available for new projects',
 
+  // Loading screen: cycles through these in order, so end on the one you want people to land on.
+  greetings: ['Salam', 'Bonjour', 'Hola', 'Ciao', 'Hallo', 'Hello'],
+
   // Hero: "<heroLead> <one of heroWords>"
   heroLead: ['I design products', 'that feel'],
   heroWords: ['effortless', 'intuitive', 'human', 'delightful'],
