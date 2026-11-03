@@ -203,8 +203,6 @@ const kinds = { mobile: Mobile, dashboard: Dashboard, commerce: Commerce, system
 export default function ProjectCover({ project, className = '', ratio }) {
   const { colors } = project
   const Art = kinds[project.kind] || Abstract
-  // Covers with several layouts (Euka) also tag the frame, so each layout can set its own background.
-  const variant = project.kind === 'creators' ? ` cover--creators-${project.coverVariant || 'a'}` : ''
   const style = {
     '--c-bg': colors.bg,
     '--c-bg2': colors.bg2,
@@ -215,7 +213,7 @@ export default function ProjectCover({ project, className = '', ratio }) {
   }
 
   return (
-    <div className={`cover cover--${project.kind}${variant} ${className}`} style={style}>
+    <div className={`cover cover--${project.kind} ${className}`} style={style}>
       <div className="cover-art">
         {project.image ? (
           <img src={project.image} alt="" className="cover-img" loading="lazy" />

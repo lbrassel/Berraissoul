@@ -12,7 +12,6 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import CaseStudy from './pages/CaseStudy'
-import CoverLab from './pages/CoverLab'
 import NotFound from './pages/NotFound'
 
 // The admin area is a separate, plain app loaded only when someone visits /admin.
@@ -75,8 +74,6 @@ function Site() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/work/:slug" element={<CaseStudy />} />
-          {/* Temporary: Euka cover proposals. Remove once one is picked. */}
-          <Route path="/lab/euka-covers" element={<CoverLab />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
