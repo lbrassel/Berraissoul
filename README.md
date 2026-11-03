@@ -8,7 +8,7 @@ Case studies are stored in Supabase and edited at **`/admin`**: log in, add or e
 
 **One-time setup**
 
-1. **Create the tables:** in Supabase, go to **SQL Editor → New query**, paste all of [`supabase/schema.sql`](supabase/schema.sql) and click **Run**. This creates the `case_studies` table, an `admins` list, and a public `case-studies` image bucket. Only admins can change them. Already set this up earlier? Run the file again: it is safe to re-run, and it adds the newer cover styles (such as the Euka "Creators" cover) to your existing table.
+1. **Create the tables:** in Supabase, go to **SQL Editor → New query**, paste all of [`supabase/schema.sql`](supabase/schema.sql) and click **Run**. This creates the `case_studies` table, an `admins` list, and a public `case-studies` image bucket. Only admins can change them. Already set this up earlier? Run the file again: it is safe to re-run, and it adds the newer fields (feature deep-dives, explorations, a custom results heading) and cover styles (such as the Euka "Creators" cover) to your existing table. Those newer fields are edited in `src/content.js` for now; `/admin` keeps them intact when you save.
 2. **Create your login:** go to **Authentication → Users → Add user → Create new user**, and enter your email and a password.
 3. **Make yourself an admin:** back in the SQL Editor, run this with your email:
    ```sql

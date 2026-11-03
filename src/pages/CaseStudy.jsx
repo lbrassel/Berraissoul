@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { gsap } from '../lib/gsap'
 import { reducedMotion } from '../lib/motion'
@@ -92,6 +92,24 @@ function CaseStudy({ project: p, next }) {
       )
     })
 
+    // Feature screens open from the bottom, then their numbered markers pop in.
+    gsap.utils.toArray('.cs-feature-screen').forEach((screen) => {
+      const trigger = { trigger: screen, start: 'top 88%', once: true }
+      gsap.fromTo(
+        screen,
+        { clipPath: 'inset(14% 0% 0% 0% round 14px)' },
+        { clipPath: 'inset(0% 0% 0% 0% round 14px)', duration: 1.4, ease: 'expo.out', scrollTrigger: trigger },
+      )
+      gsap.from(screen.querySelectorAll('.cs-pin'), {
+        scale: 0,
+        duration: 0.6,
+        ease: 'back.out(2)',
+        stagger: 0.08,
+        delay: 0.6,
+        scrollTrigger: trigger,
+      })
+    })
+
     // Next project preview rises on hover.
     gsap.from('.cs-next-title', {
       yPercent: 100,
@@ -112,6 +130,9 @@ function CaseStudy({ project: p, next }) {
   const highlights = p.highlights ?? []
   const results = p.results ?? []
   const gallery = (p.gallery ?? []).filter((g) => g.url)
+  const features = (p.features ?? []).filter((f) => f.title && f.images?.length)
+  const explorations = (p.explorations?.items ?? []).filter((x) => x.url)
+  const resultsHeading = p.resultsHeading ?? {}
 
   return (
     <article className="cs" ref={root} style={styleVars}>
@@ -191,6 +212,22 @@ function CaseStudy({ project: p, next }) {
         </section>
       )}
 
+      {features.length > 0 && (
+        <>
+          <section className="cs-section wrap">
+            <div className="cs-split cs-split--head">
+              <p className="eyebrow">The product</p>
+              <SplitReveal as="h2" className="cs-h2">
+                {countWord(features.length)} flows, <em>up close</em>
+              </SplitReveal>
+            </div>
+          </section>
+          {features.map((f, i) => (
+            <Feature key={f.title} feature={f} index={i} />
+          ))}
+        </>
+      )}
+
       {highlights.length > 0 && (
         <section className="cs-section wrap">
           <div className="cs-split cs-split--head">
@@ -220,6 +257,37 @@ function CaseStudy({ project: p, next }) {
         </section>
       )}
 
+      {explorations.length > 0 && (
+        <section className="cs-section wrap" aria-label="Explorations">
+          <div className="cs-split cs-split--head">
+            <p className="eyebrow">Explorations</p>
+            <div>
+              <SplitReveal as="h2" className="cs-h2">
+                {p.explorations.title} {p.explorations.em && <em>{p.explorations.em}</em>}
+              </SplitReveal>
+              {p.explorations.text && (
+                <p className="cs-feature-problem" data-reveal>
+                  {p.explorations.text}
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="cs-explore">
+            {explorations.map((x, i) => (
+              <figure className={`cs-explore-item${x.note ? ' is-chosen' : ''}`} key={x.url} data-reveal data-reveal-delay={i * 0.06}>
+                <div className="cs-explore-img">
+                  <img src={x.url} alt={x.label} loading="lazy" />
+                </div>
+                <figcaption>
+                  <b>{x.label}</b>
+                  {x.note && <span className="cs-chosen">{x.note}</span>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
       {gallery.length > 0 && (
         <section className="cs-section wrap" aria-label="Screens">
           <div className="cs-split cs-split--head">
@@ -232,7 +300,12 @@ function CaseStudy({ project: p, next }) {
             {gallery.map((g, i) => (
               <figure className="cs-shot-wrap" key={g.url + i}>
                 <div className="cs-shot">
-                  <img src={g.url} alt={g.caption || `${p.title} screen ${i + 1}`} loading="lazy" />
+                  <img
+                    src={g.url}
+                    alt={g.caption || `${p.title} screen ${i + 1}`}
+                    loading="lazy"
+                    style={g.ratio ? { aspectRatio: g.ratio } : undefined}
+                  />
                 </div>
                 {g.caption && <figcaption>{g.caption}</figcaption>}
               </figure>
@@ -244,9 +317,9 @@ function CaseStudy({ project: p, next }) {
       {results.length > 0 && (
         <section className="cs-section wrap">
           <div className="cs-split cs-split--head">
-            <p className="eyebrow">Impact</p>
+            <p className="eyebrow">{resultsHeading.eyebrow || 'Impact'}</p>
             <SplitReveal as="h2" className="cs-h2">
-              The <em>results</em>
+              {resultsHeading.title || 'The'} <em>{resultsHeading.em || 'results'}</em>
             </SplitReveal>
           </div>
           <dl className="cs-results">
@@ -288,5 +361,77 @@ function CaseStudy({ project: p, next }) {
         </div>
       </TLink>
     </article>
+  )
+}
+
+const COUNT_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+const countWord = (n) => COUNT_WORDS[n] ?? String(n)
+
+// A feature deep-dive: the problem, the screen(s) with numbered markers, and the
+// decision behind each marker. Hovering a marker or a decision highlights both.
+function Feature({ feature: f, index }) {
+  const [active, setActive] = useState(null)
+  const notes = f.notes ?? []
+  const images = f.images.filter((img) => img.url)
+  const hover = (i) => ({ onMouseEnter: () => setActive(i), onMouseLeave: () => setActive(null) })
+
+  return (
+    <section className="cs-section wrap cs-feature">
+      <div className="cs-split cs-split--head">
+        <p className="eyebrow">
+          {String(index + 1).padStart(2, '0')} — {f.eyebrow}
+        </p>
+        <div>
+          <SplitReveal as="h2" className="cs-h2 cs-feature-title">
+            {f.title} {f.em && <em>{f.em}</em>}
+          </SplitReveal>
+          {f.problem && (
+            <p className="cs-feature-problem" data-reveal>
+              {f.problem}
+            </p>
+          )}
+        </div>
+      </div>
+
+      <div className={`cs-feature-plate${images.length > 1 ? ' is-pair' : ''}`}>
+        {images.map((img, k) => (
+          <div className="cs-feature-screen" key={img.url}>
+            <img
+              src={img.url}
+              alt={img.alt || f.title}
+              loading="lazy"
+              style={img.ratio ? { aspectRatio: img.ratio } : undefined}
+            />
+            {notes.map((n, i) =>
+              (n.img ?? 0) === k ? (
+                <span
+                  key={i}
+                  className={`cs-pin${active === i ? ' is-active' : ''}`}
+                  style={{ left: `${n.x}%`, top: `${n.y}%` }}
+                  aria-hidden="true"
+                  {...hover(i)}
+                >
+                  {i + 1}
+                </span>
+              ) : null,
+            )}
+          </div>
+        ))}
+      </div>
+
+      {notes.length > 0 && (
+        <ol className={`cs-notes${active !== null ? ' has-active' : ''}`}>
+          {notes.map((n, i) => (
+            <li key={i} className={active === i ? 'is-active' : ''} data-reveal data-reveal-delay={i * 0.08} {...hover(i)}>
+              <span className="cs-note-num" aria-hidden="true">
+                {i + 1}
+              </span>
+              <h3>{n.title}</h3>
+              <p>{n.text}</p>
+            </li>
+          ))}
+        </ol>
+      )}
+    </section>
   )
 }

@@ -320,6 +320,9 @@
   width: 100%;
   height: auto;
   display: block;
+  /* A gallery item can set a ratio, so screens that sit side by side line up exactly. */
+  object-fit: cover;
+  object-position: top left;
   will-change: transform;
 }
 
@@ -430,5 +433,239 @@
   }
   .cs-hl-shape {
     display: none;
+  }
+}
+
+/* ── Feature deep-dives ─────────────────────────────────────────────────── */
+
+.cs-feature-title {
+  max-width: 14ch;
+}
+
+.cs-feature-problem {
+  margin-top: clamp(16px, 2vw, 28px);
+  max-width: 48ch;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.45;
+  color: var(--fg-2);
+}
+
+/* Screens sit on a soft plate tinted with the project's colours. */
+.cs-feature-plate {
+  padding: clamp(14px, 4vw, 64px);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--p-bg2) 42%, var(--bg-2));
+}
+
+.cs-feature-plate.is-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(12px, 2.4vw, 40px);
+}
+
+.cs-feature-screen {
+  position: relative;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 30px 60px -30px rgba(20, 30, 10, 0.45);
+}
+
+.cs-feature-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: top left;
+  border-radius: inherit;
+}
+
+/* Numbered markers, placed in % of the screen; sized with margins so GSAP can scale them. */
+.cs-pin {
+  --pin: 30px;
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: var(--pin);
+  height: var(--pin);
+  margin: calc(var(--pin) / -2) 0 0 calc(var(--pin) / -2);
+  border-radius: 50%;
+  background: #121211;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.9),
+    0 8px 18px rgba(0, 0, 0, 0.28);
+  transition:
+    background 0.3s,
+    color 0.3s,
+    scale 0.4s var(--ease-out);
+}
+
+.cs-pin::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid var(--p-accent);
+  opacity: 0;
+  animation: cs-pin-ping 2.6s var(--ease-out) infinite;
+}
+
+.cs-pin.is-active {
+  background: var(--p-accent);
+  color: var(--p-ink);
+  scale: 1.18;
+}
+
+@keyframes cs-pin-ping {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
+.cs-notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(24px, 3vw, 48px);
+  margin-top: clamp(28px, 4vw, 56px);
+  padding: 0;
+  list-style: none;
+}
+
+.cs-notes li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 14px;
+  row-gap: 6px;
+  align-items: start;
+}
+
+/* Dim the children, not the item: the scroll reveal leaves an inline opacity on each item. */
+.cs-notes li > * {
+  transition: opacity 0.3s;
+}
+
+.cs-notes.has-active li:not(.is-active) > * {
+  opacity: 0.4;
+}
+
+.cs-note-num {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.cs-notes li.is-active .cs-note-num {
+  background: var(--p-accent);
+  color: var(--p-ink);
+}
+
+.cs-notes h3 {
+  margin-top: 4px;
+  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.cs-notes p {
+  color: var(--fg-2);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ── Explorations ──────────────────────────────────────────────────────── */
+
+.cs-explore {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(10px, 1.4vw, 20px);
+}
+
+.cs-explore-img {
+  overflow: hidden;
+  aspect-ratio: 816 / 1080;
+  border-radius: 14px;
+  background: #0c110d;
+  box-shadow: 0 0 0 1px var(--line);
+  transition: translate 0.6s var(--ease-out);
+}
+
+.cs-explore-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cs-explore-item:hover .cs-explore-img {
+  translate: 0 -6px;
+}
+
+.cs-explore-item.is-chosen .cs-explore-img {
+  box-shadow: 0 0 0 2px var(--p-accent);
+}
+
+.cs-explore-item figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--fg-2);
+}
+
+.cs-explore-item figcaption b {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.cs-chosen {
+  padding: 3px 9px;
+  border-radius: 99px;
+  background: var(--p-accent);
+  color: var(--p-ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .cs-feature-plate.is-pair {
+    grid-template-columns: 1fr;
+  }
+  .cs-pin {
+    --pin: 22px;
+    font-size: 11px;
+    box-shadow:
+      0 0 0 3px rgba(255, 255, 255, 0.9),
+      0 6px 12px rgba(0, 0, 0, 0.25);
+  }
+  .cs-explore {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
