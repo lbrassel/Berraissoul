@@ -1,0 +1,68 @@
+/* Temporary cover-proposals page */
+
+.lab {
+  padding-top: calc(var(--nav-h) + clamp(40px, 8vw, 120px));
+  padding-bottom: clamp(64px, 10vw, 160px);
+}
+
+.lab-title {
+  margin-top: 16px;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+}
+
+.lab-title em {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+.lab-intro {
+  margin-top: 20px;
+  max-width: 60ch;
+  color: var(--fg-2);
+}
+
+.lab-item {
+  margin-top: clamp(56px, 8vw, 120px);
+}
+
+.lab-item header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+  margin-bottom: 20px;
+}
+
+.lab-id {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--fg-2);
+}
+
+.lab-item h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.lab-item header p {
+  flex-basis: 100%;
+  max-width: 60ch;
+  color: var(--fg-2);
+}
+
+.lab-frames {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  align-items: start;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+@media (max-width: 800px) {
+  .lab-frames {
+    grid-template-columns: 1fr;
+  }
+}
