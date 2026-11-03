@@ -14,23 +14,8 @@
   --section-space: clamp(110px, 15vw, 220px);
 }
 
+/* Light is the default; dark applies only when chosen with the theme toggle. */
 :root,
-[data-theme='dark'] {
-  color-scheme: dark;
-  --bg: #0b0b0c;
-  --bg-2: #141416;
-  --bg-3: #1d1d20;
-  --fg: #f0ede6;
-  --fg-2: rgba(240, 237, 230, 0.64);
-  --fg-3: rgba(240, 237, 230, 0.4);
-  --line: rgba(240, 237, 230, 0.13);
-  --accent: #ff5b2e;
-  --on-accent: #0b0b0c;
-  --dot: rgba(240, 237, 230, 0.2);
-  --ok: #3ddc84;
-  --ok-inverted: #48e790;
-}
-
 [data-theme='light'] {
   color-scheme: light;
   --bg: #f2efe8;
@@ -45,6 +30,22 @@
   --dot: rgba(18, 18, 17, 0.2);
   --ok: #17a45a;
   --ok-inverted: #b51364;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0b0b0c;
+  --bg-2: #141416;
+  --bg-3: #1d1d20;
+  --fg: #f0ede6;
+  --fg-2: rgba(240, 237, 230, 0.64);
+  --fg-3: rgba(240, 237, 230, 0.4);
+  --line: rgba(240, 237, 230, 0.13);
+  --accent: #ff5b2e;
+  --on-accent: #0b0b0c;
+  --dot: rgba(240, 237, 230, 0.2);
+  --ok: #3ddc84;
+  --ok-inverted: #48e790;
 }
 
 /* ── Base ───────────────────────────────────────────────────────────────── */

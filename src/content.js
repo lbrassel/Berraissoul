@@ -150,8 +150,8 @@ export const projects = [
       },
       {
         title: 'A CRM for every creator',
-        text: 'Affiliates, Instagram creators and saved prospects in one table, with lists, segments, sample requests and creative briefs a click away.',
-        image: '/work/euka/hl-crm.webp',
+        text: 'Affiliates, Instagram creators and saved prospects in one CRM, with segments that keep themselves up to date: who is waiting on a sample, who has posted, who is driving revenue.',
+        image: '/work/euka/hl-segments.webp',
       },
       {
         title: 'A dashboard that explains itself',

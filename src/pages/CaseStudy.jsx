@@ -57,15 +57,14 @@ function CaseStudy({ project: p, next }) {
       },
     )
 
-    // Stacked highlight cards: each one shrinks and dims as the next slides over it.
+    // Stacked highlight cards: each one eases back a little as the next slides over it.
     const cards = gsap.utils.toArray('.cs-hl')
     cards.forEach((card, i) => {
       if (i === cards.length - 1) return
       gsap.to(card.querySelector('.cs-hl-inner'), {
-        scale: 0.9,
-        filter: 'brightness(0.45)',
+        scale: 0.93,
         ease: 'none',
-        scrollTrigger: { trigger: cards[i + 1], start: 'top bottom', end: 'top 20%', scrub: true },
+        scrollTrigger: { trigger: cards[i + 1], start: 'top 70%', end: 'top 20%', scrub: true },
       })
     })
 
@@ -203,7 +202,7 @@ function CaseStudy({ project: p, next }) {
           <div className="cs-hls">
             {highlights.map((h, i) => (
               <div className="cs-hl" key={i} style={{ top: `calc(var(--nav-h) + ${i * 28}px)` }}>
-                <div className="cs-hl-inner">
+                <div className={`cs-hl-inner${h.image ? ' has-img' : ''}`}>
                   <span className="cs-hl-num">{String(i + 1).padStart(2, '0')}</span>
                   <div className="cs-hl-copy">
                     <h3>{h.title}</h3>

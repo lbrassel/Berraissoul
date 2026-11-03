@@ -237,6 +237,30 @@
   border-radius: 14px;
 }
 
+/* Cards with a screen: the product fills the right side and runs off the card's edges. */
+.cs-hl-inner.has-img {
+  grid-template-columns: auto minmax(0, 0.85fr) minmax(0, 1.3fr);
+  padding-right: 0;
+  padding-bottom: 0;
+}
+
+.cs-hl-inner.has-img .cs-hl-copy {
+  padding-bottom: clamp(24px, 4vw, 56px);
+}
+
+.cs-hl-inner.has-img .cs-hl-img {
+  align-self: end;
+  width: 100%;
+  aspect-ratio: 1.45;
+  margin-top: clamp(24px, 4vw, 56px);
+  object-fit: cover;
+  object-position: left top;
+  border-radius: 14px 0 0 0;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    -24px -12px 64px -24px rgba(0, 0, 0, 0.35);
+}
+
 @keyframes morph {
   50% {
     border-radius: 8% 50% 50% 50%;
@@ -393,6 +417,16 @@
   .cs-hl-inner {
     grid-template-columns: 1fr;
     align-items: start;
+  }
+  .cs-hl-inner.has-img {
+    grid-template-columns: 1fr;
+  }
+  .cs-hl-inner.has-img .cs-hl-copy {
+    padding-right: clamp(24px, 4vw, 56px);
+    padding-bottom: 0;
+  }
+  .cs-hl-inner.has-img .cs-hl-img {
+    margin-top: 8px;
   }
   .cs-hl-shape {
     display: none;
