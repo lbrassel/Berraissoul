@@ -39,7 +39,7 @@ create table if not exists public.case_studies (
   platform text not null default '',
   -- Illustration drawn when there is no cover image.
   kind text not null default 'mobile'
-    check (kind in ('mobile', 'dashboard', 'commerce', 'system', 'abstract')),
+    check (kind in ('mobile', 'dashboard', 'commerce', 'system', 'creators', 'abstract')),
   colors jsonb not null
     default '{"bg":"#3a2dff","bg2":"#8b6bff","ui":"#ffffff","accent":"#c9ff4a","ink":"#15123a"}',
   cover_url text,
@@ -49,13 +49,27 @@ create table if not exists public.case_studies (
   approach jsonb not null default '[]',   -- [{ "title", "text" }]
   highlights jsonb not null default '[]', -- [{ "title", "text", "image" }]
   results jsonb not null default '[]',    -- [{ "value", "suffix", "label", "decimals" }]
-  gallery jsonb not null default '[]',    -- [{ "url", "caption" }]
+  gallery jsonb not null default '[]',    -- [{ "url", "caption", "ratio" }]
+  features jsonb not null default '[]',   -- [{ "eyebrow", "title", "em", "problem", "images": [{ "url", "alt", "ratio" }], "notes": [{ "x", "y", "img", "title", "text" }] }]
+  explorations jsonb,                     -- { "title", "em", "text", "items": [{ "url", "label", "note" }] }
+  results_heading jsonb,                  -- { "eyebrow", "title", "em" }
   learnings text not null default '',
   position integer not null default 0,
   published boolean not null default false,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+-- Tables made before these were added lack the newer columns (feature deep-dives,
+-- explorations, a custom results heading) and the 'creators' cover. These lines add
+-- them, so re-running this file is all an existing project needs.
+alter table public.case_studies add column if not exists features jsonb not null default '[]';
+alter table public.case_studies add column if not exists explorations jsonb;
+alter table public.case_studies add column if not exists results_heading jsonb;
+alter table public.case_studies drop constraint if exists case_studies_kind_check;
+alter table public.case_studies
+  add constraint case_studies_kind_check
+  check (kind in ('mobile', 'dashboard', 'commerce', 'system', 'creators', 'abstract'));
 
 create or replace function public.touch_updated_at()
 returns trigger

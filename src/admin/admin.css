@@ -270,6 +270,7 @@
 }
 
 .a-field input:not([type='checkbox'], [type='radio'], [type='color'], [type='file']),
+.a-field select,
 .a-field textarea {
   width: 100%;
   padding: 11px 13px;
@@ -285,6 +286,7 @@
 }
 
 .a-field input:focus,
+.a-field select:focus,
 .a-field textarea:focus {
   outline: none;
   border-color: var(--accent);

@@ -104,8 +104,146 @@ export const process = [
 // 'mobile' | 'dashboard' | 'commerce' | 'system' | 'abstract'
 // To use a real image instead, add `image: '/work/pulse.jpg'` (file in /public).
 
-// SAMPLE projects — replace with your real case studies
+// Euka is a real case study, written from the Euka Figma file. Pulse, Atlas, Souk
+// and Kernel below are SAMPLE projects — replace them with your real case studies.
+// TODO (Euka): confirm role and add timeline/team (hidden until filled in). The results
+// are what the product handles, from the designs; swap in real outcomes once you have them.
 export const projects = [
+  {
+    slug: 'euka',
+    title: 'Euka',
+    tagline: 'Creator sales, all in one place.',
+    category: 'Web App · Creator commerce',
+    year: '2026',
+    role: 'Product Designer',
+    timeline: '',
+    team: '',
+    platform: 'Web · Light & dark',
+    kind: 'creators',
+    colors: { bg: '#b1dc45', bg2: '#e6f6b0', ui: '#ffffff', accent: '#61a52f', ink: '#0c110d' },
+    overview:
+      'Euka helps TikTok Shop brands turn creators into a sales channel: find the right creators with AI, automate outreach and samples, and see every sale they drive. I designed the product end to end, from onboarding to AI creator search, outreach automation, the affiliate CRM and analytics, along with the design system underneath it.',
+    challenge:
+      'Creator marketing is a loop with a lot of moving parts: finding creators, inviting them, shipping samples, chasing content and tracing every sale back. Euka puts that whole loop in one product, so the challenge was making a dense, data-heavy, partly automated workspace feel calm, scannable and honest about what is happening.',
+    quote: 'How might a brand go from finding a creator to seeing their first sale without ever leaving one product?',
+    approach: [
+      {
+        title: 'Map the loop',
+        icon: 'loop',
+        text: 'Find creators, send invites, ship samples, track every sale. That loop became the spine of the product: Programs for the work, Insights for the results, and setup progress always one click away.',
+      },
+      {
+        title: 'Design for trust',
+        icon: 'shield',
+        text: 'Agents and AI do the heavy lifting, so every agent, suggestion and segment shows its status, the evidence behind it and a way for a person to step in.',
+      },
+      {
+        title: 'Build the system',
+        icon: 'layers',
+        text: '26 colour tokens checked to WCAG AA in light and dark, a type scale and ten component groups, from creator-level badges to combo charts, so 70+ screens and states read as one product.',
+      },
+    ],
+    features: [
+      {
+        eyebrow: 'Onboarding',
+        title: 'Up and running in',
+        em: 'minutes',
+        problem:
+          'A creator program has a lot of moving parts. If day one feels like configuring software, a brand never gets to its first creator sale.',
+        images: [
+          { url: '/work/euka/f-signup.webp', ratio: '1728 / 1117', alt: 'Sign-up, step 4 of 4: connect your store' },
+          { url: '/work/euka/f-setup.webp', ratio: '1728 / 1117', alt: 'Getting started: the setup guide, 9 of 10 steps complete' },
+        ],
+        notes: [
+          { img: 0, x: 13.4, y: 28.8, title: 'Four short steps', text: 'Account, email, brand, store. A segmented bar shows exactly how much is left.' },
+          { img: 0, x: 13.4, y: 68, title: 'Trust before access', text: 'Connecting a store says up front what Euka can touch: read-only, never your listings, prices or orders.' },
+          { img: 1, x: 16.5, y: 21, title: 'Progress you can see', text: 'The workspace opens on a setup guide: 9 of 10 steps done, one to go.' },
+          { img: 1, x: 16.5, y: 34.9, title: 'One next step, not ten', text: 'The next task gets the spotlight, with a preview of what it makes and how long it takes. Finished steps fold away.' },
+        ],
+      },
+      {
+        eyebrow: 'AI Creator Search',
+        title: 'Find creators who',
+        em: 'sell',
+        problem:
+          'Brands scroll through thousands of profiles and pick by follower count and gut feel. Followers say little about who will actually sell.',
+        images: [{ url: '/work/euka/f-search.webp', alt: 'AI Creator Search with five filters applied' }],
+        notes: [
+          { x: 16.5, y: 10.9, title: 'Describe, don’t configure', text: 'Search starts as a sentence, like “creators saying ‘best shampoo’ in English”, or an image, not a wall of dropdowns.' },
+          { x: 16.5, y: 21.2, title: 'Filters you can see', text: 'Refinements from a five-tab filter drawer stay on screen as chips, so narrowing 4.4M creators to 12,480 is never a black box.' },
+          { x: 16.5, y: 35, title: 'Sales signals first', text: 'Cards lead with GMV, GMV tier (L1–L7), live GMV and sample requests: what predicts a creator will sell.' },
+          { x: 77.6, y: 13.9, title: 'Built for shortlists', text: 'Tick creators straight from the grid and add them to a list, ready for outreach.' },
+        ],
+      },
+      {
+        eyebrow: 'Outreach automation',
+        title: 'Automation you can',
+        em: 'trust',
+        problem:
+          'Creators message brands all day with the same questions. Answering by hand does not scale, and a bot that answers wrongly can cost the partnership.',
+        images: [{ url: '/work/euka/f-automation.webp', alt: 'Auto Responder: suggested answers to creator questions' }],
+        notes: [
+          { x: 16.5, y: 17, title: 'Say what’s off, and the fix', text: 'When automation is paused, a banner says so in plain words, when it last ran, and offers the fix in one click.' },
+          { x: 16.5, y: 38.7, title: 'Show the AI’s work', text: 'Messages scanned, questions detected, suggestions ready: the numbers behind every suggestion.' },
+          { x: 16.5, y: 62.3, title: 'Show the evidence', text: 'Each suggested answer lists the creator messages that triggered it.' },
+          { x: 76.5, y: 75.2, title: 'A person signs off', text: 'Nothing goes live on its own: add it to the FAQ, edit it first, or mark it not useful.' },
+        ],
+      },
+      {
+        eyebrow: 'Affiliate CRM',
+        title: 'A CRM that knows',
+        em: 'what’s next',
+        problem: 'A list of 5,000 affiliates does not tell you who needs a nudge today.',
+        images: [{ url: '/work/euka/f-segments.webp', alt: 'Affiliate CRM segments, grouped by funnel stage' }],
+        notes: [
+          { x: 16.5, y: 32, title: 'Segments follow the funnel', text: 'Samples in shipment, content pending, posted a video, revenue generating: each stage is a segment that keeps itself up to date.' },
+          { x: 16.5, y: 40.4, title: 'Every number has a next step', text: 'Each segment comes with the one action that moves creators on: a welcome message, a reminder to post, a request for Spark codes.' },
+          { x: 16.5, y: 55.6, title: 'Win back the quiet ones', text: 'Creators who posted once, went inactive or never posted are grouped and ready to re-engage.' },
+          { x: 97.8, y: 79, title: 'Segments power agents', text: 'Any custom segment can start an outreach agent in one click.' },
+        ],
+      },
+      {
+        eyebrow: 'Analytics',
+        title: 'A dashboard that',
+        em: 'explains itself',
+        problem: 'Brands could see their GMV, but not why it moved or which part of the program to fix.',
+        images: [{ url: '/work/euka/f-dashboard.webp', alt: 'Dashboard: key metrics and the affiliate funnel' }],
+        notes: [
+          { x: 16.5, y: 30.4, title: 'Always compared', text: 'Every metric is measured against the previous period by default, with a clear up or down chip.' },
+          { x: 16.5, y: 69, title: 'One funnel, four verbs', text: 'Reach, activate, amplify, convert, each with volume, change and an efficiency rate, like orders per 1K impressions.' },
+          { x: 16.5, y: 87, title: 'Say what changed', text: 'A plain-language read-out sits next to the numbers: “Impressions fell 21%. Orders held. Each view is converting better.”' },
+          { x: 71.5, y: 78.9, title: 'No fake zeros', text: 'Where tracking is not set up, the row says “No data” and links to the fix, instead of showing a misleading 0.' },
+        ],
+      },
+    ],
+    explorations: {
+      title: 'Five directions for',
+      em: 'the first screen',
+      text: 'Sign-in and sign-up are where a brand first sees what Euka does, so the brand panel got its own exploration, from a static app window to live, moving activity.',
+      items: [
+        { url: '/work/euka/ex-a.webp', label: 'App window' },
+        { url: '/work/euka/ex-b.webp', label: 'Floating widgets' },
+        { url: '/work/euka/ex-c.webp', label: 'Dark bento', note: 'Sign-up' },
+        { url: '/work/euka/ex-d.webp', label: 'Live activity' },
+        { url: '/work/euka/ex-e.webp', label: 'Live activity, v2', note: 'Sign-in' },
+      ],
+    },
+    gallery: [
+      { url: '/work/euka/sign-in.webp', caption: 'Sign-in, with the live-activity panel from the exploration above.' },
+      { url: '/work/euka/design-colour.webp', ratio: '4 / 5', caption: 'Colour tokens: 26 semantic tokens, text contrast checked to AA in light and dark.' },
+      { url: '/work/euka/design-badges.webp', ratio: '4 / 5', caption: 'Badges: status never relies on colour alone, and creator levels run L1 to L7.' },
+      { url: '/work/euka/creator-panel.webp', caption: 'Creator drawer: 30-day GMV, sales-channel and category breakdowns and recent videos, without leaving the results.' },
+      { url: '/work/euka/outreach-agents.webp', caption: 'Outreach agents: quotas, status and results for every agent, and a plain alert when they stop.' },
+    ],
+    resultsHeading: { eyebrow: 'The product', title: 'Built to', em: 'scale' },
+    results: [
+      { value: 4.4, suffix: 'M', decimals: 1, label: 'Creators searchable in plain language' },
+      { value: 5, suffix: 'K', label: 'Creator invites a day, sent by outreach agents' },
+      { value: 10, suffix: 'K', label: 'Live collaborations tracked at once' },
+    ],
+    learnings:
+      'Automated products earn trust through honesty: a status that says what is off, a suggestion that shows its evidence, a funnel that says “No data” instead of pretending. A token-based system made that consistency cheap across every screen.',
+  },
   {
     slug: 'pulse',
     title: 'Pulse',

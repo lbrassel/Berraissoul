@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { flushSync } from 'react-dom'
 import { reducedMotion } from '../lib/motion'
 
-const current = () => document.documentElement.dataset.theme || 'dark'
+const current = () => document.documentElement.dataset.theme || 'light'
 
 // Switches theme with a circular reveal that grows from the click point
 // (View Transitions API), falling back to an instant swap.

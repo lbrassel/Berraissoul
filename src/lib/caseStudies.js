@@ -1,6 +1,6 @@
 import { SUPABASE_KEY, SUPABASE_URL, TABLE } from './supabase'
 
-export const KINDS = ['mobile', 'dashboard', 'commerce', 'system', 'abstract']
+export const KINDS = ['mobile', 'dashboard', 'commerce', 'system', 'creators', 'abstract']
 export const DEFAULT_COLORS = { bg: '#3a2dff', bg2: '#8b6bff', ui: '#ffffff', accent: '#c9ff4a', ink: '#15123a' }
 
 const list = (value) => (Array.isArray(value) ? value : [])
@@ -29,6 +29,9 @@ export function toProject(row) {
     highlights: list(row.highlights),
     results: list(row.results),
     gallery: list(row.gallery),
+    features: list(row.features),
+    explorations: row.explorations || null,
+    resultsHeading: row.results_heading || null,
     learnings: text(row.learnings),
     published: Boolean(row.published),
     position: row.position ?? 0,
@@ -57,6 +60,9 @@ export function toRow(p) {
     highlights: list(p.highlights),
     results: list(p.results),
     gallery: list(p.gallery),
+    features: list(p.features),
+    explorations: p.explorations || null,
+    results_heading: p.resultsHeading || null,
     learnings: text(p.learnings),
     published: Boolean(p.published),
     position: p.position ?? 0,

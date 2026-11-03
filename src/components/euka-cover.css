@@ -1,0 +1,451 @@
+/* Euka cover — the dashboard with today's widgets (from the product's "Live activity"
+   panel) floating off it. Drawn on a centred 100 × 80cqw board, so it fits the 5:4 work
+   card and the 16:9 case-study frame alike. Every direct child drifts with the pointer by
+   its depth --d, plus an optional hover offset (--hx, --hy). */
+
+.cover--creators {
+  background: #eaf2d6;
+}
+
+.cover--creators .cover-art {
+  background:
+    radial-gradient(circle at 18% 12%, #fbfdf3 0, transparent 55%),
+    linear-gradient(140deg, #e1eec4, #f3f7ea);
+}
+
+.eu {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100cqw;
+  height: 80cqw;
+  margin: -40cqw 0 0 -50cqw;
+  color: var(--eu-ink);
+  --eu-lime: #b1dc45;
+  --eu-lime-deep: #9cc43a;
+  --eu-ink: #0d110d;
+  --eu-ink-2: #10120f;
+  --eu-card: #272926;
+  --eu-olive: #505e26;
+  --eu-shadow: 0 2.4cqw 5cqw -1.6cqw rgba(30, 45, 10, 0.35);
+}
+
+.eu > * {
+  position: absolute;
+  translate:
+    calc(var(--px, 0) * var(--d, 1) * 1cqw + var(--hx, 0cqw))
+    calc(var(--py, 0) * var(--d, 1) * 1cqw + var(--hy, 0cqw));
+  transition:
+    translate 0.6s var(--ease-out),
+    scale 0.9s var(--ease-out),
+    rotate 0.9s var(--ease-out);
+}
+
+/* ── Dashboard ────────────────────────────────────────────────────────────── */
+
+.eu-dash {
+  left: 13cqw;
+  top: 13cqw;
+  width: 66cqw;
+  height: 46cqw;
+}
+
+.eu-win {
+  display: grid;
+  grid-template-columns: 9.5cqw 1fr;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 2cqw;
+  background: #fff;
+  box-shadow: var(--eu-shadow);
+  transform: perspective(160cqw) rotateY(-7deg) rotateX(4deg);
+  transition: transform 1s var(--ease-out);
+}
+
+.eu-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4cqw;
+  padding: 2.2cqw 1.8cqw;
+  border-right: 1px solid #efefef;
+}
+
+.eu-mark {
+  width: 3.2cqw;
+  aspect-ratio: 1;
+  margin-bottom: 1cqw;
+  border-radius: 1cqw;
+  background: var(--eu-lime);
+}
+
+.eu-side i {
+  display: block;
+  height: 0.9cqw;
+  border-radius: 99px;
+  background: #e6e7e3;
+}
+
+.eu-side i.is-active {
+  background: var(--eu-ink);
+}
+
+.eu-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8cqw;
+  min-width: 0;
+  padding: 2.4cqw 2.6cqw;
+}
+
+.eu-head {
+  display: flex;
+  align-items: center;
+  gap: 1cqw;
+}
+
+.eu-head b {
+  margin-right: auto;
+  font-size: 2.3cqw;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.eu-head span {
+  width: 7cqw;
+  height: 2.8cqw;
+  border-radius: 99px;
+  box-shadow: inset 0 0 0 1px #e3e4e0;
+}
+
+.eu-head span.is-dark {
+  background: var(--eu-ink);
+  box-shadow: none;
+}
+
+.eu-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4cqw;
+}
+
+.eu-kpis div,
+.eu-funnel {
+  border-radius: 1.3cqw;
+  box-shadow: inset 0 0 0 1px #ececec;
+}
+
+.eu-kpis div {
+  padding: 1.3cqw 1.6cqw;
+}
+
+.eu-kpis small,
+.eu-funnel small {
+  display: block;
+  font-size: 1.15cqw;
+  color: #7d807a;
+}
+
+.eu-kpis b {
+  display: block;
+  margin-top: 0.5cqw;
+  font-size: 2.8cqw;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.eu-funnel {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  align-items: center;
+  gap: 2cqw;
+  padding: 1.8cqw 2cqw;
+}
+
+.eu-funnel b {
+  display: block;
+  margin-top: 0.6cqw;
+  font-size: 4.4cqw;
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.eu-stages {
+  display: flex;
+  flex-direction: column;
+  gap: 1cqw;
+}
+
+.eu-stages i {
+  display: block;
+  width: var(--w);
+  height: 1.6cqw;
+  border-radius: 99px;
+  background: var(--eu-lime);
+}
+
+.eu-stages i:nth-child(2) {
+  background: #c9e780;
+}
+
+.eu-stages i:nth-child(3) {
+  background: #dcefb0;
+}
+
+.eu-stages i:nth-child(4) {
+  background: var(--eu-ink);
+}
+
+/* ── Widgets ──────────────────────────────────────────────────────────────── */
+
+.ew {
+  border-radius: 1.9cqw;
+  box-shadow: var(--eu-shadow);
+}
+
+.ew-ico {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ew-label {
+  display: flex;
+  align-items: center;
+  gap: 0.7cqw;
+  font-size: 1.45cqw;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.ew-value {
+  display: flex;
+  align-items: center;
+  gap: 1.3cqw;
+  margin-top: 1.4cqw;
+  font-size: 4.4cqw;
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.ew-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4cqw;
+  padding: 0.45cqw 1cqw;
+  border-radius: 99px;
+  background: var(--eu-ink-2);
+  color: var(--eu-lime);
+  font-size: 1.25cqw;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* GMV today */
+
+.ew-gmv {
+  width: 31cqw;
+  height: 20.7cqw;
+  padding: 2.2cqw 2.3cqw;
+  overflow: hidden;
+  background: var(--eu-lime);
+  color: var(--eu-ink);
+}
+
+.ew-gmv .ew-label {
+  opacity: 0.8;
+}
+
+.ew-area {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 100 / 30;
+  overflow: visible;
+}
+
+.ew-area-fill {
+  fill: var(--eu-lime-deep);
+  opacity: 0.6;
+}
+
+.ew-area-line {
+  fill: none;
+  stroke: var(--eu-ink);
+  stroke-width: 0.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* Orders today */
+
+.ew-orders {
+  display: flex;
+  flex-direction: column;
+  width: 27.2cqw;
+  height: 19.3cqw;
+  padding: 2.2cqw 2.3cqw;
+  background: var(--eu-card);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07), var(--eu-shadow);
+}
+
+.ew-orders .ew-label {
+  color: #cfd3cb;
+}
+
+.ew-orders .ew-value {
+  margin-top: 1.2cqw;
+  font-size: 4.2cqw;
+}
+
+.ew-up {
+  color: var(--eu-lime);
+  font-size: 1.35cqw;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.ew-bars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.9cqw;
+  margin-top: 1.4cqw;
+}
+
+.ew-bars i {
+  flex: 1;
+  height: var(--h);
+  border-radius: 0.5cqw 0.5cqw 0.2cqw 0.2cqw;
+  background: var(--eu-olive);
+  transform-origin: bottom;
+}
+
+.ew-bars i:last-child {
+  background: var(--eu-lime);
+}
+
+/* New order */
+
+.ew-toast {
+  display: flex;
+  align-items: center;
+  gap: 1.5cqw;
+  padding: 1.5cqw 2.4cqw 1.5cqw 1.6cqw;
+  background: var(--eu-lime);
+  white-space: nowrap;
+}
+
+.ew-tile {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 4.7cqw;
+  aspect-ratio: 1;
+  border-radius: 1.1cqw;
+  background: var(--eu-ink-2);
+  color: var(--eu-lime);
+  font-size: 2.2cqw;
+}
+
+.ew-toast b {
+  display: block;
+  font-size: 1.6cqw;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.ew-toast small {
+  display: block;
+  margin-top: 0.3cqw;
+  font-size: 1.3cqw;
+  opacity: 0.72;
+}
+
+/* ── Placement and motion ─────────────────────────────────────────────────── */
+
+.eu-toast {
+  left: 58cqw;
+  top: 5cqw;
+  --d: 3;
+  animation: ew-bob 4.6s ease-in-out infinite alternate;
+}
+
+.eu-gmv {
+  left: 5cqw;
+  top: 47cqw;
+  --d: 2.2;
+}
+
+.eu-orders {
+  left: 66cqw;
+  top: 45cqw;
+  --d: 2.4;
+}
+
+/* Hover: the window settles flat, the widgets spread and today's numbers redraw */
+
+.cover-host:hover .eu-win {
+  transform: perspective(160cqw) rotateY(-2deg) rotateX(1deg) scale(1.02);
+}
+
+.cover-host:hover .eu-toast {
+  --hx: 1.2cqw;
+  --hy: -1cqw;
+  scale: 1.06;
+}
+
+.cover-host:hover .eu-gmv {
+  --hx: -1.4cqw;
+  --hy: 1cqw;
+  rotate: -2deg;
+}
+
+.cover-host:hover .eu-orders {
+  --hx: 1.4cqw;
+  --hy: 1cqw;
+  rotate: 2deg;
+}
+
+.cover-host:hover .ew-bars i {
+  animation: ew-grow 0.8s var(--ease-out) both;
+  animation-delay: calc(var(--i) * 45ms);
+}
+
+.cover-host:hover .ew-area-line {
+  animation: ew-draw 1.3s var(--ease-out) both;
+}
+
+@keyframes ew-bob {
+  to {
+    transform: translateY(-1cqw);
+  }
+}
+
+@keyframes ew-grow {
+  from {
+    transform: scaleY(0.12);
+  }
+}
+
+@keyframes ew-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
