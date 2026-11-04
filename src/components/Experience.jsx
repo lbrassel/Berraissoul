@@ -17,9 +17,9 @@ export default function Experience() {
         </header>
 
         <ol className="xp-list">
-          {experience.map((job) => (
-            <li className="xp-row" key={job.years + job.role} data-reveal>
-              <span className="xp-years">{job.years}</span>
+          {experience.map((job, i) => (
+            <li className="xp-row" key={job.company + job.role + i} data-reveal>
+              <span className="xp-years">{job.years || String(i + 1).padStart(2, '0')}</span>
               <span className="xp-role">{job.role}</span>
               <span className="xp-company">{job.company}</span>
               <span className="xp-place">{job.place}</span>

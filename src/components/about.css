@@ -206,3 +206,7 @@
     gap: 16px;
   }
 }
+
+.about-cv {
+  margin-top: clamp(28px, 3vw, 44px);
+}

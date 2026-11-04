@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { site } from '../content'
+import { archive, site } from '../content'
 import Hero from '../components/Hero'
 import Marquee from '../components/Marquee'
 import Work from '../components/Work'
@@ -14,7 +14,7 @@ export default function Home() {
   useReveal(root)
 
   useEffect(() => {
-    document.title = `${site.name} — ${site.role}`
+    document.title = `${site.fullName} — ${site.role}`
   }, [])
 
   return (
@@ -24,7 +24,7 @@ export default function Home() {
         <Marquee items={site.skills} />
       </div>
       <Work />
-      <Archive />
+      {archive.length > 0 && <Archive />}
       <About />
       <Process />
       <Experience />

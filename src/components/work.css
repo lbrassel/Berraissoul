@@ -129,3 +129,28 @@
     display: none;
   }
 }
+
+/* Case studies on the way: same card, a label instead of a link. */
+.work-card--soon .work-link {
+  cursor: default;
+}
+
+.work-card--soon .cover-art {
+  filter: saturate(0.55);
+}
+
+.work-soon {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  z-index: 2;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  pointer-events: none;
+}

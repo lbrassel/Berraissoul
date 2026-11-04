@@ -106,6 +106,9 @@ export default function Nav() {
               <RollText>{l.label}</RollText>
             </TLink>
           ))}
+          <a href={site.cv} className="nav-link" target="_blank" rel="noreferrer">
+            <RollText>CV</RollText>
+          </a>
         </nav>
 
         <div className="nav-item nav-actions">
@@ -133,6 +136,11 @@ export default function Nav() {
         <div className="menu-foot">
           <a href={`mailto:${site.email}`}>{site.email}</a>
           <ul>
+            <li>
+              <a href={site.cv} target="_blank" rel="noreferrer">
+                Download CV
+              </a>
+            </li>
             {site.socials.map((s) => (
               <li key={s.label}>
                 <a href={s.href} target="_blank" rel="noreferrer">
