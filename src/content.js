@@ -265,7 +265,7 @@ export const projects = [
     kind: 'academy',
     colors: { bg: '#ff6137', bg2: '#ffd9cc', ui: '#ffffff', accent: '#ff6137', ink: '#1b1714' },
     overview:
-      'UGC University trains creators to make content brands pay for. Creators pick a coach who already sells on TikTok Shop, learn by filming real assignments, get reviewed, and graduate into paid brand partnerships. I designed the learning platform end to end, from sign-in and choosing a coach to lessons, submissions, achievements, partnerships and the graduate hub, along with the marketing site and the logo explorations.',
+      'UGC University trains creators to make content brands pay for. Creators pick a coach who already sells on TikTok Shop, learn by filming real assignments, get reviewed, and graduate into paid brand partnerships. I designed the learning platform end to end, from sign-in and choosing a coach to lessons, submissions, achievements, partnerships and the graduate hub, plus the marketing website that sells the program.',
     challenge:
       'Most creator courses are a playlist and a promise: people watch, never film, and drift off long before they earn anything. The platform had to turn watching into doing, give creators a reason to come back every day, and keep the payoff, real brand deals, in sight from day one without opening it up before they are ready.',
     quote: 'How might we turn watching tutorials into a daily habit of filming, with a brand deal at the end?',
@@ -367,6 +367,34 @@ export const projects = [
         ],
       },
     ],
+    website: {
+      eyebrow: 'The website',
+      title: 'A site that sells',
+      em: 'the outcome',
+      text: 'Before anyone sees the app, the website has to make a pay-what-you-want course feel credible. Every section leads with proof: real coaches, real revenue and real student results.',
+      pages: [
+        {
+          url: '/work/ugc-university/web-home.webp',
+          height: 7838,
+          label: 'Home',
+          path: 'ugcuniversity.com',
+          alt: 'The full home page: hero with coaches, stats, the program, coach earnings, three steps, success stories, pricing and FAQ',
+        },
+        {
+          url: '/work/ugc-university/web-coach.webp',
+          height: 7598,
+          label: 'Coach profile',
+          path: 'ugcuniversity.com/coaches/sam-schuerman',
+          alt: 'A full coach profile: about, stats, top-earning videos, ten course modules, success stories, pricing and FAQ',
+        },
+      ],
+      notes: [
+        { title: 'The coaches are the product', text: 'The hero leads with the coaches themselves, each with their niche, brand revenue and videos created, before any feature list.' },
+        { title: 'Proof before the pitch', text: '125K+ affiliates trained, $1B+ in revenue, 15M+ products sold: the numbers come first, and again right where people decide to pay.' },
+        { title: 'Pay what you think it’s worth', text: 'The pricing promise is the headline. The pricing block says “You decide”, with everything included listed beside it.' },
+        { title: 'Every coach gets a page', text: 'A profile with their story, top-earning videos and the full module list, each module one sign-in away.' },
+      ],
+    },
     explorations: {
       eyebrow: 'Statuses',
       title: 'One lesson,',
@@ -383,7 +411,6 @@ export const projects = [
       { url: '/work/ugc-university/sign-in.webp', caption: 'Sign-in: the promise and the proof first, with 125,847+ creators trained by coaches still in the game.' },
       { url: '/work/ugc-university/courses.webp', ratio: '1440 / 1024', caption: 'Courses: one coach at a time. The others dim, and a banner says how to switch.' },
       { url: '/work/ugc-university/submissions.webp', ratio: '1440 / 1024', caption: 'Submissions: total, approved, pending and what needs your action, above one list of work.' },
-      { url: '/work/ugc-university/coaches.webp', caption: 'Marketing site: coaches shown the way creators show up, with their niche, brand revenue and videos created.' },
     ],
     resultsHeading: { eyebrow: 'The product', title: 'By the', em: 'numbers' },
     results: [

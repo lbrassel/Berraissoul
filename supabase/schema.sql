@@ -51,6 +51,7 @@ create table if not exists public.case_studies (
   results jsonb not null default '[]',    -- [{ "value", "suffix", "label", "decimals" }]
   gallery jsonb not null default '[]',    -- [{ "url", "caption", "ratio" }]
   features jsonb not null default '[]',   -- [{ "eyebrow", "title", "em", "problem", "images": [{ "url", "alt", "ratio" }], "notes": [{ "x", "y", "img", "title", "text" }] }]
+  website jsonb,                          -- { "eyebrow", "title", "em", "text", "pages": [{ "url", "height", "label", "path", "alt" }], "notes": [{ "title", "text" }] }
   explorations jsonb,                     -- { "eyebrow", "title", "em", "text", "items": [{ "url", "label", "note", "alt" }] }
   results_heading jsonb,                  -- { "eyebrow", "title", "em" }
   learnings text not null default '',
@@ -66,6 +67,7 @@ create table if not exists public.case_studies (
 alter table public.case_studies add column if not exists features jsonb not null default '[]';
 alter table public.case_studies add column if not exists explorations jsonb;
 alter table public.case_studies add column if not exists results_heading jsonb;
+alter table public.case_studies add column if not exists website jsonb;
 alter table public.case_studies drop constraint if exists case_studies_kind_check;
 alter table public.case_studies
   add constraint case_studies_kind_check

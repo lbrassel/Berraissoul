@@ -689,6 +689,133 @@
   font-weight: 600;
 }
 
+/* ── Website ───────────────────────────────────────────────────────────── */
+
+.cs-sites {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 40px);
+  padding: clamp(14px, 4vw, 64px);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--p-bg2) 42%, var(--bg-2));
+}
+
+.cs-site {
+  min-width: 0;
+}
+
+.cs-site-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 14px 14px 0 0;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.cs-site-bar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #e2ded9;
+}
+
+.cs-site-bar span {
+  flex: 1;
+  overflow: hidden;
+  margin-left: 10px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: #f3f1ee;
+  color: #6f6a64;
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cs-site-view {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1440 / 900;
+  border-radius: 0 0 14px 14px;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 30px 60px -30px rgba(20, 30, 10, 0.45);
+  outline: none;
+}
+
+.cs-site-view img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: translate 1.2s var(--ease-out);
+}
+
+/* Hover or focus plays the page from top to bottom; leaving brings it back up. */
+.cs-site-view:hover img,
+.cs-site-view:focus-visible img {
+  translate: 0 var(--shift);
+  transition: translate var(--dur) cubic-bezier(0.45, 0, 0.55, 1) 0.15s;
+}
+
+.cs-site-view:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--p-accent),
+    0 30px 60px -30px rgba(20, 30, 10, 0.45);
+}
+
+.cs-site figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  margin-top: 14px;
+  font-size: 15px;
+}
+
+.cs-site figcaption b {
+  font-weight: 500;
+}
+
+.cs-site-hint {
+  color: var(--fg-2);
+  font-size: 14px;
+}
+
+.cs-site-hint .on-touch {
+  display: none;
+}
+
+/* Touch screens can't hover: scroll the page inside its frame instead. */
+@media (hover: none) {
+  .cs-site-view {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .cs-site-view:hover img,
+  .cs-site-view:focus-visible img {
+    translate: none;
+  }
+  .cs-site-hint .on-hover {
+    display: none;
+  }
+  .cs-site-hint .on-touch {
+    display: inline;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-site-view {
+    overflow-y: auto;
+  }
+  .cs-site-view:hover img,
+  .cs-site-view:focus-visible img {
+    translate: none;
+  }
+}
+
 @media (max-width: 860px) {
   .cs-feature-plate.is-pair {
     grid-template-columns: 1fr;
@@ -702,5 +829,8 @@
   }
   .cs-explore {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cs-sites {
+    grid-template-columns: 1fr;
   }
 }
