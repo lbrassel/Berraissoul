@@ -127,6 +127,12 @@ export default function About() {
               ))}
             </dl>
 
+            <p className="about-cv" data-reveal>
+              <a className="btn btn--accent" href={site.cv} target="_blank" rel="noreferrer">
+                Download my CV <span aria-hidden="true">↓</span>
+              </a>
+            </p>
+
             <Toolbox />
           </div>
         </div>

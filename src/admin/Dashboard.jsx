@@ -82,7 +82,7 @@ export default function Dashboard() {
         <div className="a-card a-empty">
           <h2>No case studies yet</h2>
           <p className="a-muted">
-            Until you publish one, the site shows the four sample projects. Start from scratch, or import the samples as drafts and edit them.
+            Until you publish one, the site shows the case studies in content.js. Start from scratch, or import those as drafts and edit them.
           </p>
           <div className="a-row">
             <Link to="/admin/new" className="a-btn a-btn--primary">

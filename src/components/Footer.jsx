@@ -78,7 +78,7 @@ export default function Footer() {
   return (
     <footer className="footer" id="contact" ref={root}>
       <div className="footer-inner wrap">
-        <p className="eyebrow">Have a project in mind?</p>
+        <p className="eyebrow">Hiring a product designer?</p>
 
         <h2 className="cta">
           <a className="cta-link" href={`mailto:${site.email}`} data-cursor="view" data-cursor-label="Say hello">
@@ -96,6 +96,13 @@ export default function Footer() {
             </a>
           </Magnetic>
           <ul className="footer-socials">
+            <li>
+              <Magnetic strength={0.25}>
+                <a className="btn" href={site.cv} target="_blank" rel="noreferrer">
+                  <RollText>Download CV</RollText>
+                </a>
+              </Magnetic>
+            </li>
             {site.socials.map((s) => (
               <li key={s.label}>
                 <Magnetic strength={0.25}>

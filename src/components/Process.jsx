@@ -12,8 +12,11 @@ export default function Process() {
   useReadyGSAP(() => {
     const mm = gsap.matchMedia()
     mm.add('(min-width: 900px) and (prefers-reduced-motion: no-preference)', () => {
+      const pin = root.current.querySelector('.proc-pin')
       const track = root.current.querySelector('.proc-track')
-      const distance = () => track.scrollWidth - window.innerWidth
+      // Scroll until the end of the track meets the section's right edge. The section is
+      // narrower than the window (side margins, scrollbar), so measure the section itself.
+      const distance = () => Math.max(0, track.scrollWidth - pin.clientWidth)
       const slide = gsap.to(track, {
         x: () => -distance(),
         ease: 'none',
@@ -38,7 +41,8 @@ export default function Process() {
           opacity: 0,
           stagger: 0.06,
           ease: 'power3.out',
-          scrollTrigger: { trigger: card, containerAnimation: slide, start: 'left 85%', end: 'left 45%', scrub: true },
+          // Finishes by the time the whole card is on screen, so the last card always completes.
+          scrollTrigger: { trigger: card, containerAnimation: slide, start: 'left 95%', end: 'right 100%', scrub: true },
         })
       })
     })

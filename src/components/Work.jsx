@@ -2,12 +2,13 @@ import { useRef } from 'react'
 import { gsap } from '../lib/gsap'
 import { finePointer, reducedMotion } from '../lib/motion'
 import { TLink, useReadyGSAP } from './Transition'
+import { upcoming } from '../content'
 import { useProjects } from './Projects'
 import ProjectCover from './ProjectCover'
 import SplitReveal from './SplitReveal'
 import './work.css'
 
-function WorkCard({ project, index }) {
+function WorkCard({ project, index, soon = false }) {
   const card = useRef(null)
 
   useReadyGSAP((_, contextSafe) => {
@@ -65,18 +66,19 @@ function WorkCard({ project, index }) {
     }
   }, card)
 
+  // Case studies on the way show the cover and a label, but don't link anywhere yet.
+  const Frame = soon ? 'div' : TLink
+  const frameProps = soon
+    ? { 'data-cursor': 'view', 'data-cursor-label': 'Coming soon' }
+    : { to: `/work/${project.slug}`, label: project.title, 'data-cursor': 'view', 'data-cursor-label': 'View case' }
+
   return (
-    <article className={`work-card work-card--${index % 2 ? 'right' : 'left'}`} ref={card}>
-      <TLink
-        to={`/work/${project.slug}`}
-        label={project.title}
-        className="work-link cover-host"
-        data-cursor="view"
-        data-cursor-label="View case"
-      >
+    <article className={`work-card work-card--${index % 2 ? 'right' : 'left'}${soon ? ' work-card--soon' : ''}`} ref={card}>
+      <Frame className="work-link cover-host" {...frameProps}>
         <div className="work-media">
           <ProjectCover project={project} />
           <span className="work-glare" />
+          {soon && <span className="work-soon">Case study coming soon</span>}
         </div>
         <div className="work-info">
           <span className="work-index">{String(index + 1).padStart(2, '0')}</span>
@@ -86,14 +88,16 @@ function WorkCard({ project, index }) {
               <span className="work-tagline"> — {project.tagline}</span>
             </h3>
             <p className="work-meta">
-              {project.category} <span>·</span> {project.year}
+              {project.category} <span>·</span> {soon ? project.role : project.year}
             </p>
           </div>
-          <span className="work-arrow" aria-hidden="true">
-            ↗
-          </span>
+          {!soon && (
+            <span className="work-arrow" aria-hidden="true">
+              ↗
+            </span>
+          )}
         </div>
-      </TLink>
+      </Frame>
     </article>
   )
 }
@@ -106,16 +110,19 @@ export default function Work() {
         <header className="section-head">
           <SplitReveal as="h2" className="h-section" id="work-title">
             Selected <em>work</em>
-            <span className="count">({String(projects.length).padStart(2, '0')})</span>
+            <span className="count">({String(projects.length + upcoming.length).padStart(2, '0')})</span>
           </SplitReveal>
           <p className="section-lede" data-reveal>
-            A few products I’ve helped shape — from zero-to-one launches to systems that scale.
+            Products I’ve shaped end to end, from zero-to-one launches to systems that scale.
           </p>
         </header>
 
         <div className="work-grid">
           {projects.map((p, i) => (
             <WorkCard project={p} index={i} key={p.slug} />
+          ))}
+          {upcoming.map((p, i) => (
+            <WorkCard project={p} index={projects.length + i} key={p.slug} soon />
           ))}
         </div>
       </div>

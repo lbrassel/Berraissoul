@@ -31,6 +31,10 @@ Everything else you read on the site lives in **`src/content.js`**: name, bio, e
 - **Portrait:** put a photo in `public/` and set `site.portrait: '/portrait.jpg'`.
 - **Colours & fonts:** tokens at the top of `src/styles/global.css`.
 
+## CV
+
+The downloadable CV is `public/Taha-Berraissoul-CV.pdf`, linked from the nav, the About section and the footer. Its source is [`cv/cv.html`](cv/cv.html): edit the words there, then run `npm run cv` to rebuild the PDF (needs Playwright with Chromium).
+
 ## Interactions
 
 | Where | What happens |
