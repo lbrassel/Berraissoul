@@ -81,7 +81,7 @@
 
       /* Summary */
       .summary {
-        margin-top: 22px;
+        margin-top: 20px;
         font-size: 10.6pt;
         line-height: 1.6;
         max-width: 92%;
@@ -115,7 +115,7 @@
 
       /* Sections */
       section {
-        margin-top: 30px;
+        margin-top: 26px;
       }
       h2 {
         display: flex;
@@ -156,7 +156,7 @@
 
       /* Experience */
       .job {
-        padding: 16px 0;
+        padding: 14px 0;
         border-top: 1px solid var(--line);
         break-inside: avoid;
       }
@@ -305,37 +305,34 @@
         color: var(--ink-3);
       }
 
+      .duo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 36px;
+        break-inside: avoid;
+      }
+      .duo .case,
       .bonus {
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
+        height: calc(100% - 26px);
+      }
+      .bonus {
         padding: 14px 16px;
         border-radius: 8px;
         background: var(--tint);
         border-left: 3px solid var(--accent);
-        break-inside: avoid;
-      }
-      .bonus-tag {
-        flex: none;
-        font-size: 7.6pt;
-        font-weight: 600;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #fff;
-        background: var(--accent);
-        border-radius: 4px;
-        padding: 2px 7px;
-        margin-top: 2px;
       }
       .bonus b {
         display: block;
-        font-size: 10.6pt;
+        font-size: 11pt;
         font-weight: 600;
       }
       .bonus span {
         display: block;
-        margin-top: 2px;
+        margin-top: 5px;
         color: var(--ink-2);
+      }
+      .xlink {
+        color: var(--accent);
       }
 
       .page-break {
@@ -386,6 +383,19 @@
 
       <article class="job">
         <div class="job-top">
+          <p class="company">Euka <span class="where">· Freelance · Remote · <a class="xlink" href="https://www.berraissoul.com/work/euka">Case study ↗</a></span></p>
+          <p class="dates">2026</p>
+        </div>
+        <div class="roles">
+          <p class="role"><span>Product Designer</span></p>
+        </div>
+        <ul>
+          <li>Designed a creator commerce platform for TikTok Shop brands end to end: AI creator search, outreach automation, affiliate CRM and analytics, plus its design system.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-top">
           <p class="company">BlackStone eIT <span class="where">· Dubai, UAE · Remote</span></p>
           <p class="dates">Sep 2022 – Present</p>
         </div>
@@ -401,6 +411,9 @@
         </ul>
       </article>
 
+    </section>
+
+    <section class="page-break">
       <article class="job">
         <div class="job-top">
           <p class="company">Fortunian <span class="where">· United States · Remote</span></p>
@@ -415,12 +428,9 @@
           <li>Ran research, Figma prototypes and usability tests, iterating on what users struggled with.</li>
         </ul>
       </article>
-    </section>
-
-    <section class="page-break">
       <article class="job">
         <div class="job-top">
-          <p class="company">Topple <span class="where">· United States · Remote · Contract</span></p>
+          <p class="company">Topple <span class="where">· United States · Remote</span></p>
           <p class="dates">Feb 2020 – Jan 2022</p>
         </div>
         <div class="roles">
@@ -449,17 +459,9 @@
       </article>
     </section>
 
-    <section>
-      <h2>Selected case studies</h2>
-      <div class="cases">
-        <article class="case">
-          <div class="case-top">
-            <h3>Euka</h3>
-            <a class="link" href="https://www.berraissoul.com/work/euka">View ↗</a>
-          </div>
-          <p class="what">Creator commerce for TikTok Shop brands</p>
-          <p>AI creator search, outreach automation, an affiliate CRM and sales analytics, designed end to end with its design system.</p>
-        </article>
+    <section class="duo">
+      <div>
+        <h2>Selected case study</h2>
         <article class="case">
           <div class="case-top">
             <h3>UGC University</h3>
@@ -469,14 +471,13 @@
           <p>Coaches, filmed assignments with reviews, levels and streaks, designed end to end with the marketing site.</p>
         </article>
       </div>
-    </section>
-
-    <section class="bonus">
-      <p class="bonus-tag">Bonus</p>
       <div>
-        <b>Motion &amp; interaction design</b>
-        <span>Micro-interactions, transitions and animated prototypes in ProtoPie, Principle and After Effects, so products
-          feel alive and engineers can see exactly how each interaction should move.</span>
+        <h2>Bonus</h2>
+        <div class="bonus">
+          <b>Motion &amp; interaction design</b>
+          <span>Micro-interactions, transitions and animated prototypes in ProtoPie, Principle and After Effects, so products
+            feel alive and engineers see exactly how each interaction should move.</span>
+        </div>
       </div>
     </section>
 
@@ -487,9 +488,7 @@
           <dt>Research</dt>
           <dd>User research, usability testing, A/B testing, design sprints</dd>
           <dt>Design</dt>
-          <dd>Information architecture, user flows, prototyping, interaction design, UI, accessibility</dd>
-          <dt>Systems</dt>
-          <dd>Design systems, UI kits, developer handoff</dd>
+          <dd>Information architecture, user flows, prototyping, interaction design, UI, accessibility, design systems, developer handoff</dd>
           <dt>Tools</dt>
           <dd>Figma, ProtoPie, Principle, Sketch, Adobe Photoshop, Illustrator, After Effects</dd>
         </dl>

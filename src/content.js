@@ -68,10 +68,11 @@ export const site = {
 
 // Most recent first. `years` is optional: leave it empty and the row shows its number instead.
 export const experience = [
+  { years: '2026', role: 'Product Designer (freelance)', company: 'Euka', place: 'Remote' },
   { years: '2023 — Now', role: 'Product Designer', company: 'BlackStone eIT', place: 'Dubai · Remote' },
   { years: '2022 — 2023', role: 'Senior UX/UI Designer', company: 'BlackStone eIT', place: 'Dubai · Remote' },
   { years: '2021 — 2022', role: 'Senior UX/UI Designer', company: 'Fortunian', place: 'United States · Remote' },
-  { years: '2020 — 2022', role: 'Product Designer (contract)', company: 'Topple', place: 'United States · Remote' },
+  { years: '2020 — 2022', role: 'Product Designer', company: 'Topple', place: 'United States · Remote' },
   { years: '2018 — 2021', role: 'UI/UX Designer', company: 'Feel and Clic', place: 'Paris, France' },
 ]
 
@@ -103,7 +104,7 @@ export const process = [
 // To use a real image instead, add `image: '/work/pulse.jpg'` (file in /public).
 
 // Euka and UGC University are real case studies, written from their Figma files.
-// TODO (Euka, UGC University): confirm role and add timeline/team (hidden until filled in).
+// TODO (UGC University): confirm role, and add timeline/team for both (hidden until filled in).
 // The results are what the products contain, from the designs; swap in real outcomes once
 // you have them.
 export const projects = [
@@ -113,7 +114,7 @@ export const projects = [
     tagline: 'Creator sales, all in one place.',
     category: 'Web App · Creator commerce',
     year: '2026',
-    role: 'Product Designer',
+    role: 'Product Designer · Freelance',
     timeline: '',
     team: '',
     platform: 'Web · Light & dark',
