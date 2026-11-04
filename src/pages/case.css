@@ -806,21 +806,6 @@
   }
 }
 
-.cs-site-dirs {
-  margin-top: clamp(48px, 7vw, 96px);
-}
-
-.cs-site-dirs-title {
-  margin-bottom: clamp(16px, 2vw, 28px);
-  font-size: clamp(1.3rem, 1.8vw, 1.7rem);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-}
-
-.cs-explore--wide .cs-explore-img {
-  aspect-ratio: 1440 / 1152;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .cs-site-view {
     overflow-y: auto;

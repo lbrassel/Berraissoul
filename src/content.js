@@ -394,15 +394,6 @@ export const projects = [
         { title: 'Pay what you think it’s worth', text: 'The pricing promise is the headline. The pricing block says “You decide”, with everything included listed beside it.' },
         { title: 'Every coach gets a page', text: 'A profile with their story, top-earning videos and the full module list, each module one sign-in away.' },
       ],
-      directions: {
-        title: 'Three directions for the hero',
-        items: [
-          { url: '/work/ugc-university/web-hero-1.webp', label: 'Blue gradient' },
-          { url: '/work/ugc-university/web-hero-2.webp', label: 'Midnight, blue accent' },
-          { url: '/work/ugc-university/web-hero-3.webp', label: 'Green glow' },
-          { url: '/work/ugc-university/web-hero-final.webp', label: 'Midnight, orange accent', note: 'Final' },
-        ],
-      },
     },
     explorations: {
       eyebrow: 'Statuses',

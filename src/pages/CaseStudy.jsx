@@ -69,27 +69,19 @@ function CaseStudy({ project: p, next }) {
       })
     })
 
-    // Screens: each one opens from the bottom, then drifts slightly as you scroll.
+    // Screens: each one opens from the bottom and settles at full size, so no part of
+    // the screen is ever cropped once it is in view.
     gsap.utils.toArray('.cs-shot').forEach((shot) => {
+      const trigger = { trigger: shot, start: 'top 90%', once: true }
       gsap.fromTo(
         shot,
         { clipPath: 'inset(18% 0% 0% 0% round 18px)' },
-        {
-          clipPath: 'inset(0% 0% 0% 0% round 18px)',
-          duration: 1.4,
-          ease: 'expo.out',
-          scrollTrigger: { trigger: shot, start: 'top 90%', once: true },
-        },
+        { clipPath: 'inset(0% 0% 0% 0% round 18px)', duration: 1.4, ease: 'expo.out', scrollTrigger: trigger },
       )
       gsap.fromTo(
         shot.querySelector('img'),
-        { scale: 1.12, yPercent: -3 },
-        {
-          scale: 1,
-          yPercent: 3,
-          ease: 'none',
-          scrollTrigger: { trigger: shot, start: 'top bottom', end: 'bottom top', scrub: true },
-        },
+        { scale: 1.06 },
+        { scale: 1, duration: 1.6, ease: 'expo.out', scrollTrigger: trigger },
       )
     })
 
@@ -444,13 +436,12 @@ function Feature({ feature: f, index }) {
 
 // A website shown as real pages: each long page sits in a browser frame and scrolls
 // through on hover or keyboard focus (and by touch on phones), followed by the
-// decisions behind it and the hero directions that led to it.
+// decisions behind it.
 const VIEW_H = 900 // the frame's viewport height, in the pages' own 1440px-wide pixels
 
 function Website({ site: w }) {
   const pages = w.pages.filter((pg) => pg.url && pg.height)
   const notes = w.notes ?? []
-  const directions = (w.directions?.items ?? []).filter((d) => d.url)
 
   return (
     <section className="cs-section wrap" aria-label="Website">
@@ -513,28 +504,6 @@ function Website({ site: w }) {
         </ol>
       )}
 
-      {directions.length > 0 && (
-        <div className="cs-site-dirs">
-          {w.directions.title && (
-            <h3 className="cs-site-dirs-title" data-reveal>
-              {w.directions.title}
-            </h3>
-          )}
-          <div className="cs-explore cs-explore--wide" style={{ '--cols': Math.min(directions.length, 4) }}>
-            {directions.map((d, i) => (
-              <figure className={`cs-explore-item${d.note ? ' is-chosen' : ''}`} key={d.url} data-reveal data-reveal-delay={i * 0.06}>
-                <div className="cs-explore-img">
-                  <img src={d.url} alt={d.alt || d.label} loading="lazy" />
-                </div>
-                <figcaption>
-                  <b>{d.label}</b>
-                  {d.note && <span className="cs-chosen">{d.note}</span>}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      )}
     </section>
   )
 }
