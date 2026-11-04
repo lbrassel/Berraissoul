@@ -24,6 +24,21 @@
   object-fit: cover;
 }
 
+/* With a photo, a soft shade at the bottom keeps the caption readable. */
+.portrait:has(img)::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 28%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+  pointer-events: none;
+}
+
+.portrait:has(img) .portrait-caption {
+  z-index: 1;
+  color: #fff;
+}
+
 .portrait-art {
   position: absolute;
   inset: 0;
