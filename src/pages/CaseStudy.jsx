@@ -232,6 +232,8 @@ function CaseStudy({ project: p, next }) {
         </>
       )}
 
+      {p.website?.pages?.length > 0 && <Website site={p.website} />}
+
       {highlights.length > 0 && (
         <section className="cs-section wrap">
           <div className="cs-split cs-split--head">
@@ -435,6 +437,103 @@ function Feature({ feature: f, index }) {
             </li>
           ))}
         </ol>
+      )}
+    </section>
+  )
+}
+
+// A website shown as real pages: each long page sits in a browser frame and scrolls
+// through on hover or keyboard focus (and by touch on phones), followed by the
+// decisions behind it and the hero directions that led to it.
+const VIEW_H = 900 // the frame's viewport height, in the pages' own 1440px-wide pixels
+
+function Website({ site: w }) {
+  const pages = w.pages.filter((pg) => pg.url && pg.height)
+  const notes = w.notes ?? []
+  const directions = (w.directions?.items ?? []).filter((d) => d.url)
+
+  return (
+    <section className="cs-section wrap" aria-label="Website">
+      <div className="cs-split cs-split--head">
+        <p className="eyebrow">{w.eyebrow || 'The website'}</p>
+        <div>
+          <SplitReveal as="h2" className="cs-h2">
+            {w.title} {w.em && <em>{w.em}</em>}
+          </SplitReveal>
+          {w.text && (
+            <p className="cs-feature-problem" data-reveal>
+              {w.text}
+            </p>
+          )}
+        </div>
+      </div>
+
+      <div className="cs-sites">
+        {pages.map((pg) => {
+          const shift = Math.max(0, (1 - VIEW_H / pg.height) * 100)
+          const style = { '--shift': `-${shift.toFixed(2)}%`, '--dur': `${Math.round(pg.height / 500)}s` }
+          return (
+            <figure className="cs-site" key={pg.url} data-reveal>
+              <div className="cs-site-bar" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+                <span>{pg.path || pg.label}</span>
+              </div>
+              <div className="cs-site-view" tabIndex={0} aria-label={`${pg.label}, full page`}>
+                <img src={pg.url} alt={pg.alt || `${pg.label} page`} loading="lazy" style={style} />
+              </div>
+              <figcaption>
+                <b>{pg.label}</b>
+                {pg.caption ? (
+                  <span className="cs-site-hint">{pg.caption}</span>
+                ) : (
+                  <span className="cs-site-hint">
+                    <span className="on-hover">Hover to scroll the full page</span>
+                    <span className="on-touch">Scroll inside to see the full page</span>
+                  </span>
+                )}
+              </figcaption>
+            </figure>
+          )
+        })}
+      </div>
+
+      {notes.length > 0 && (
+        <ol className="cs-notes">
+          {notes.map((n, i) => (
+            <li key={i} data-reveal data-reveal-delay={i * 0.08}>
+              <span className="cs-note-num" aria-hidden="true">
+                {i + 1}
+              </span>
+              <h3>{n.title}</h3>
+              <p>{n.text}</p>
+            </li>
+          ))}
+        </ol>
+      )}
+
+      {directions.length > 0 && (
+        <div className="cs-site-dirs">
+          {w.directions.title && (
+            <h3 className="cs-site-dirs-title" data-reveal>
+              {w.directions.title}
+            </h3>
+          )}
+          <div className="cs-explore cs-explore--wide" style={{ '--cols': Math.min(directions.length, 4) }}>
+            {directions.map((d, i) => (
+              <figure className={`cs-explore-item${d.note ? ' is-chosen' : ''}`} key={d.url} data-reveal data-reveal-delay={i * 0.06}>
+                <div className="cs-explore-img">
+                  <img src={d.url} alt={d.alt || d.label} loading="lazy" />
+                </div>
+                <figcaption>
+                  <b>{d.label}</b>
+                  {d.note && <span className="cs-chosen">{d.note}</span>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
       )}
     </section>
   )
