@@ -27,6 +27,9 @@ export const site = {
   about:
     "I'm Taha, a product designer who works like a product partner. I start from the problem and the metric, not the screen, then take it from research and flows to prototypes, tested UI and the design system engineers build from.",
 
+  // Optional: put a photo in /public (e.g. /portrait.jpg) and set its path here.
+  portrait: null,
+
   // From the CV
   stats: [
     { value: 8, suffix: '+', label: 'Years designing products' },
