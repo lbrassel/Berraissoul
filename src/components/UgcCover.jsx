@@ -50,7 +50,7 @@ function Lesson() {
           <b>Parts of a Video Overview</b>
         </div>
         <div className="ug-video">
-          <img src={`${IMG}/cover-lesson.webp`} alt="" loading="lazy" />
+          <img src={`${IMG}/cover-lesson.webp`} alt="" />
           <span className="ug-play">
             <Play />
           </span>
@@ -60,7 +60,7 @@ function Lesson() {
           </div>
         </div>
         <div className="ug-foot">
-          <img src={`${IMG}/cover-coach.webp`} alt="" className="ug-face" loading="lazy" />
+          <img src={`${IMG}/cover-coach.webp`} alt="" className="ug-face" />
           <span className="ug-coach">
             <b>Steve Aliance</b>
             <small>Coach</small>
@@ -139,7 +139,7 @@ function Level() {
   return (
     <div className="uw uw-level ug-level">
       <p className="uw-row">
-        <img src={`${IMG}/cover-avatar.webp`} alt="" className="uw-avatar" loading="lazy" />
+        <img src={`${IMG}/cover-avatar.webp`} alt="" className="uw-avatar" />
         <span className="uw-lv">Level 3 · Rising star</span>
       </p>
       <p className="uw-xp-line">
