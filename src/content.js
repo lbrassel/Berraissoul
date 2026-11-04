@@ -22,7 +22,7 @@ export const site = {
   heroLead: ['I design products', 'that feel'],
   heroWords: ['effortless', 'intuitive', 'human', 'delightful'],
   intro:
-    'Product designer with 8+ years turning complex SaaS, fintech and mobile flows into products people use and come back to, for teams in the US, the UAE and France.',
+    'Product designer with 8+ years turning complex SaaS, fintech and mobile flows into products people use and come back to, across the US, Canada, the UK, France, the UAE and Morocco.',
 
   about:
     "I'm Taha, a product designer who works like a product partner. I start from the problem and the metric, not the screen, then take it from research and flows to prototypes, tested UI and the design system engineers build from.",
@@ -34,7 +34,8 @@ export const site = {
   stats: [
     { value: 8, suffix: '+', label: 'Years designing products' },
     { value: 40, suffix: '%', label: 'Higher retention at Topple, 6 months after launch' },
-    { value: 30, suffix: '%', label: 'Less user drop-off at Fortunian' },
+    { value: 15, suffix: '%', label: 'More conversions and 30% less drop-off at Fortunian' },
+    { value: 6, suffix: '', label: 'Markets: US, Canada, UK, France, UAE, Morocco' },
   ],
 
   skills: [
