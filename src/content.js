@@ -43,6 +43,7 @@ export const site = {
     'User Research',
     'Information Architecture',
     'Interaction Design',
+    'Motion Design',
     'Design Systems',
     'Prototyping',
     'Usability Testing',

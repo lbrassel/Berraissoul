@@ -305,6 +305,39 @@
         color: var(--ink-3);
       }
 
+      .bonus {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        padding: 14px 16px;
+        border-radius: 8px;
+        background: var(--tint);
+        border-left: 3px solid var(--accent);
+        break-inside: avoid;
+      }
+      .bonus-tag {
+        flex: none;
+        font-size: 7.6pt;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #fff;
+        background: var(--accent);
+        border-radius: 4px;
+        padding: 2px 7px;
+        margin-top: 2px;
+      }
+      .bonus b {
+        display: block;
+        font-size: 10.6pt;
+        font-weight: 600;
+      }
+      .bonus span {
+        display: block;
+        margin-top: 2px;
+        color: var(--ink-2);
+      }
+
       .page-break {
         break-before: page;
         margin-top: 0;
@@ -315,7 +348,7 @@
     <header class="head">
       <div>
         <h1 class="name">Taha Berraissoul</h1>
-        <p class="title">Product Designer · SaaS, fintech &amp; mobile</p>
+        <p class="title">Product Designer</p>
       </div>
       <ul class="contact">
         <li><a href="https://www.berraissoul.com"><strong>berraissoul.com</strong></a></li>
@@ -438,6 +471,15 @@
       </div>
     </section>
 
+    <section class="bonus">
+      <p class="bonus-tag">Bonus</p>
+      <div>
+        <b>Motion &amp; interaction design</b>
+        <span>Micro-interactions, transitions and animated prototypes in ProtoPie, Principle and After Effects, so products
+          feel alive and engineers can see exactly how each interaction should move.</span>
+      </div>
+    </section>
+
     <section class="two">
       <div>
         <h2>Skills</h2>
@@ -455,10 +497,6 @@
       <div>
         <h2>Education &amp; certificates</h2>
         <ul class="edu">
-          <li>
-            <b>Human-Computer Interaction (HCI)</b>
-            <span>Interaction Design Foundation</span> <em>· In progress</em>
-          </li>
           <li>
             <b>Google UX Design Professional Certificate</b>
             <span>Google</span>
