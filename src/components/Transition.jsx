@@ -10,7 +10,7 @@ const Ctx = createContext(null)
 export const usePageTransition = () => useContext(Ctx)
 export const useReady = () => useContext(Ctx).ready
 
-// Runs a GSAP setup only once the page is visible (after the preloader or a page
+// Runs a GSAP setup only once the page is visible (on load, or after a page
 // transition), and reverts it whenever the page gets covered again.
 export function useReadyGSAP(setup, scope, deps = []) {
   const ready = useReady()
@@ -29,7 +29,8 @@ const FULL_TOP = 'ellipse(150% 125% at 50% 0%)'
 const HIDDEN_TOP = 'ellipse(150% 0% at 50% 0%)'
 
 export function TransitionProvider({ children }) {
-  const [ready, setReady] = useState(false)
+  // No loading screen: the page is ready (and animates in) as soon as it mounts.
+  const [ready, setReady] = useState(true)
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const overlay = useRef(null)

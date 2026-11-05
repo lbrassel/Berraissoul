@@ -19,7 +19,7 @@ export default function Hero() {
     setSlot(words[0])
 
     if (reduce) {
-      gsap.set(words.slice(1), { yPercent: 110 })
+      gsap.set(words.slice(1), { yPercent: 150 })
       return
     }
 
@@ -30,7 +30,7 @@ export default function Hero() {
       wordsClass: 'sw',
       charsClass: 'sc',
     })
-    gsap.set(words.slice(1), { yPercent: 110 })
+    gsap.set(words.slice(1), { yPercent: 150 })
     gsap
       .timeline({ delay: 0.15 })
       .from(split.chars, { yPercent: 120, rotate: 8, duration: 1.3, ease: 'expo.out', stagger: 0.022 })
@@ -38,6 +38,8 @@ export default function Hero() {
       .from('.hero-canvas', { opacity: 0, duration: 2, ease: 'power2.out' }, 0)
       .from('[data-hero-fade]', { y: 24, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.08 }, 0.6)
 
+    // Waiting words sit at 150%, far enough down that their tall italic letters
+    // don't peek into the slot's bottom padding.
     // Rotating word: slide the current word out and the next one in, while
     // the slot eases to the new word's width.
     let index = 0
@@ -46,7 +48,7 @@ export default function Hero() {
       const next = words[(i + 1) % words.length]
       rotate
         .to(word, { yPercent: -110, duration: 0.8, ease: 'power4.inOut' }, '+=1.8')
-        .set(next, { yPercent: 110 }, '<')
+        .set(next, { yPercent: 150 }, '<')
         .to(next, { yPercent: 0, duration: 0.8, ease: 'power4.inOut' }, '<')
         .to(slot, { width: () => next.offsetWidth, duration: 0.8, ease: 'power4.inOut' }, '<')
         .call(() => (index = (i + 1) % words.length))
