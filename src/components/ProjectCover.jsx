@@ -1,5 +1,6 @@
 import EukaCover from './EukaCover'
 import UgcCover from './UgcCover'
+import PoplarCover from './PoplarCover'
 import './cover.css'
 
 // Illustrated project covers drawn with HTML/CSS so the portfolio looks finished
@@ -199,7 +200,7 @@ function Abstract({ project }) {
   )
 }
 
-const kinds = { mobile: Mobile, dashboard: Dashboard, commerce: Commerce, system: System, creators: EukaCover, academy: UgcCover, abstract: Abstract }
+const kinds = { mobile: Mobile, dashboard: Dashboard, commerce: Commerce, system: System, creators: EukaCover, academy: UgcCover, treasury: PoplarCover, abstract: Abstract }
 
 export default function ProjectCover({ project, className = '', ratio }) {
   const { colors } = project
