@@ -588,15 +588,6 @@ export const upcoming = [
     kind: 'dashboard',
     colors: { bg: '#1d2b53', bg2: '#4058a8', ui: '#f5f7ff', accent: '#ffcc33', ink: '#0d1430' },
   },
-  {
-    slug: 'fortunian',
-    title: 'Fortunian',
-    tagline: 'Key screens, redesigned to convert.',
-    category: 'Product redesign',
-    role: 'Senior UX/UI Designer',
-    kind: 'mobile',
-    colors: { bg: '#0f3b3a', bg2: '#1e7a63', ui: '#f4f7f5', accent: '#ffb547', ink: '#0d2322' },
-  },
 ]
 
 // Smaller explorations for the "More explorations" list. The section is hidden while this is empty.
