@@ -109,11 +109,13 @@ export const process = [
 ]
 
 // Each cover is drawn in code. `kind` picks the illustration:
-// 'mobile' | 'dashboard' | 'commerce' | 'system' | 'creators' (Euka) | 'academy' (UGC University) | 'abstract'
+// 'mobile' | 'dashboard' | 'commerce' | 'system' | 'creators' (Euka) | 'academy' (UGC University) |
+// 'treasury' (Poplar) | 'abstract'
 // To use a real image instead, add `image: '/work/pulse.jpg'` (file in /public).
 
-// Euka and UGC University are real case studies, written from their Figma files.
-// TODO (UGC University): confirm role, and add timeline/team for both (hidden until filled in).
+// Euka, UGC University and Poplar are real case studies, written from their Figma files.
+// TODO (UGC University): confirm role, and add timeline/team for all three (hidden until filled in).
+// TODO (Poplar): confirm the year and role.
 // The results are what the products contain, from the designs; swap in real outcomes once
 // you have them.
 export const projects = [
@@ -420,6 +422,157 @@ export const projects = [
     ],
     learnings:
       'Motivation is a design material. A streak, the next level, a lock that names its key: making progress visible kept the path clear better than any copy could. And practice needs a person on the other end. The review loop is what makes it a school, not a playlist.',
+  },
+  {
+    slug: 'poplar',
+    title: 'Poplar',
+    tagline: 'Idle cash, earning every minute.',
+    category: 'Web App · Fintech',
+    year: '2023',
+    role: 'Product Designer',
+    timeline: '',
+    team: '',
+    platform: 'Web · Desktop & mobile',
+    kind: 'treasury',
+    colors: { bg: '#123149', bg2: '#d4efe2', ui: '#ffffff', accent: '#11cc7a', ink: '#0b1f2f' },
+    overview:
+      'Poplar helps businesses put idle cash to work. It connects to a company’s bank accounts, finds the money that has been sitting still, and moves it into yield strategies, with Prime Trust as the regulated custodian. I designed the MVP end to end, on desktop and mobile: sign-up and two-factor log-in, business verification, bank linking and idle cash, one-time and automated deposits, withdrawals, the dashboard, the earnings forecaster, plans and settings.',
+    challenge:
+      'A business doesn’t hand its cash to an app it just met. Before earning a cent, Poplar asks a finance team for incorporation papers, directors, beneficiaries and access to its bank, then asks it to let automation move real money. The product had to make a regulated, paperwork-heavy setup feel short, show the value before the work, and make every transfer predictable, with a review before anything moves.',
+    quote: 'How might a finance team go from sign-up to earning on idle cash without ever feeling it lost track of a dollar?',
+    approach: [
+      {
+        title: 'Value before paperwork',
+        icon: 'chart',
+        text: 'Verification takes days, so it never blocks the app. A three-step setup card tracks it on the dashboard, and people can skip ahead, explore and see what Poplar would earn them while documents are reviewed.',
+      },
+      {
+        title: 'One way to move money',
+        icon: 'layers',
+        text: 'Every deposit and withdrawal, one-time or automated, is the same stack of step cards that unlock in order and end on a preview. Learn it once, use it everywhere.',
+      },
+      {
+        title: 'Trust at every step',
+        icon: 'shield',
+        text: 'Secured by Prime Trust on every form, two-factor log-in from day one, plain warnings before risky amounts, and an activity log of every sign-in and withdrawal.',
+      },
+    ],
+    features: [
+      {
+        eyebrow: 'Business verification',
+        title: 'Verification that',
+        em: 'waits for you',
+        problem:
+          'Before a business can earn, the custodian needs its incorporation papers, directors, beneficiaries and proof of address. Few founders have all of that to hand in one sitting.',
+        images: [
+          { url: '/work/poplar/f-documents.webp', ratio: '1400 / 1513', alt: 'Business verification, step 3 of 3: six required documents, uploaded, uploading or failed' },
+          { url: '/work/poplar/f-setup.webp', ratio: '1400 / 1207', alt: 'The dashboard after submitting: Poplar setup, 2 of 3 steps done' },
+        ],
+        notes: [
+          { img: 0, x: 67.4, y: 13, title: 'Trust, up front', text: 'Every verification step carries “Secured by Prime Trust”, the regulated custodian that holds the funds.' },
+          { img: 0, x: 34, y: 51.6, title: 'Every file says how it went', text: 'Uploaded, uploading or failed, and a failure gives the reason and a Retry: “file is too large, over 5MB”.' },
+          { img: 0, x: 57.2, y: 90.8, title: 'Leave and come back', text: '“I’ll do it later” saves progress instead of blocking the app, so a missing document never ends the session.' },
+          { img: 1, x: 3.2, y: 36.4, title: 'Waiting, said plainly', text: 'Once submitted, the setup card says review takes 3–5 business days and invites people to explore in the meantime.' },
+        ],
+      },
+      {
+        eyebrow: 'Idle cash',
+        title: 'Find the money',
+        em: 'sitting still',
+        problem:
+          'Most businesses keep far more in checking than they need, and no one has time to work out how much. Poplar has to show that number before it asks for anything else.',
+        images: [
+          { url: '/work/poplar/f-idle-found.webp', ratio: '1400 / 958', alt: 'You have idle cash: $189,639.75 found across 2 accounts' },
+          { url: '/work/poplar/f-idle-breakdown.webp', ratio: '1400 / 960', alt: 'Idle cash breakdown for Chase Checking, by how long it has been idle' },
+        ],
+        notes: [
+          { img: 0, x: 34.8, y: 39.5, title: 'Lead with the number', text: '$189,639.75 across two accounts: what the scan found comes first, in the biggest type on the screen.' },
+          { img: 0, x: 24.2, y: 52.5, title: 'Explain the jargon', text: '“Idle cash” is defined in one plain sentence, with a link to read more for anyone who wants it.' },
+          { img: 0, x: 35.2, y: 67.4, title: 'No pressure', text: '“I’ll do it later” sits beside View idle cash, and the number stays pinned on the dashboard for when they’re ready.' },
+          { img: 1, x: 66.6, y: 44, title: 'How long it’s been still', text: 'Each account breaks idle cash down by age, 60, 87 or 156 days, so a finance team can see what is safe to move.' },
+        ],
+      },
+      {
+        eyebrow: 'Automated deposits',
+        title: 'Set rules,',
+        em: 'not reminders',
+        problem:
+          'Moving idle cash by hand each month is the chore that gets skipped. But automation that touches the company’s bank account has to be precise and impossible to misread.',
+        images: [
+          { url: '/work/poplar/f-automated-steps.webp', ratio: '1400 / 1142', alt: 'Automated deposit: source account, amount and frequency, and rules and conditions, each filled in' },
+          { url: '/work/poplar/f-preview.webp', ratio: '1400 / 1443', alt: 'Deposit preview: a warning, the schedule, the condition, the strategies and a 0% fee' },
+        ],
+        notes: [
+          { img: 0, x: 21.4, y: 64.6, title: 'Read back in a sentence', text: 'Each finished step turns into a plain summary, like “Deposit $150,000.00, every quarter, starting on Jun 7, 2023”, with Edit beside it.' },
+          { img: 0, x: 21.4, y: 80.6, title: 'Rules a CFO would write', text: 'Conditions like “if account balance is above $750,000” keep operating cash safe: the deposit only runs when the rule holds.' },
+          { img: 1, x: 16, y: 23.5, title: 'Warn before, not after', text: 'The preview flags an amount above the recommended share, 10% against an advised 7%, before anyone confirms.' },
+          { img: 1, x: 15.4, y: 61.3, title: 'No black box', text: 'Every strategy shows its yield, its share and its total, and the fee is spelled out, even when it is 0%.' },
+        ],
+      },
+      {
+        eyebrow: 'Dashboard',
+        title: 'A dashboard that',
+        em: 'shows the yield',
+        problem:
+          'Once money is in, the question is simple: is it working? The answer had to be on the first screen, right next to the money that still isn’t.',
+        images: [
+          { url: '/work/poplar/f-dashboard.webp', ratio: '1400 / 1604', alt: 'Dashboard: your funds with the balance chart, the idle cash card and recent transactions' },
+          { url: '/work/poplar/f-earnings.webp', ratio: '1400 / 1382', alt: 'Dashboard with the Earnings view: total earnings curve over the week' },
+        ],
+        notes: [
+          { img: 0, x: 66.6, y: 8.2, title: 'Idle cash never hides', text: 'Money that could be earning stays pinned at the top right, one arrow away from a deposit.' },
+          { img: 0, x: 16.4, y: 25.3, title: 'The two numbers that matter', text: 'Balance and total earnings sit side by side, earnings in Poplar green.' },
+          { img: 0, x: 39, y: 77.4, title: 'Status at a glance', text: 'Complete, Pending, Cancelled, Rejected: each status has its own colour, and arrows tell deposits from withdrawals.' },
+          { img: 1, x: 46.2, y: 28.6, title: 'One chart, two stories', text: 'A toggle swaps the balance history for the earnings curve, so “am I earning?” is one click away.' },
+        ],
+      },
+      {
+        eyebrow: 'Withdrawals',
+        title: 'Getting money out,',
+        em: 'just as clear',
+        problem:
+          'People only trust putting money in when taking it out feels easy. A withdrawal can’t hide its limits or hurry the person making it.',
+        images: [
+          { url: '/work/poplar/f-withdraw-steps.webp', ratio: '1400 / 871', alt: 'One-time withdrawal: choose the destination account first, the next steps still faded' },
+          { url: '/work/poplar/f-withdraw-balance.webp', ratio: '1400 / 1103', alt: 'One-time withdrawal with the available balance at the top and the destination account chosen' },
+        ],
+        notes: [
+          { img: 0, x: 17.3, y: 56, title: 'One step at a time', text: 'Later steps stay faded until the one before is done, so the next action is never in doubt.' },
+          { img: 0, x: 67.2, y: 80.4, title: 'Preview before it moves', text: 'Preview stays off until the form is complete. Every money flow ends on a review screen, never straight on a transfer.' },
+          { img: 1, x: 18.3, y: 32, title: 'Know the ceiling first', text: 'A later iteration put the available balance at the top, so people know what they can take out before typing an amount.' },
+          { img: 1, x: 18.3, y: 78.6, title: 'Optional, and says so', text: 'Scheduling is there for planned payouts and labelled optional, so it never slows down an urgent withdrawal.' },
+        ],
+      },
+    ],
+    explorations: {
+      eyebrow: 'Mobile',
+      title: 'The same product,',
+      em: 'in a pocket',
+      text: 'Every core flow was also designed at 320px wide. Steps stack, side panels become full screens and long previews scroll, so a founder can check the yield or set up a deposit from a phone.',
+      items: [
+        { url: '/work/poplar/m-dashboard.webp', label: 'Setup', alt: 'Mobile dashboard: Poplar setup, 1 of 3 steps' },
+        { url: '/work/poplar/m-documents.webp', label: 'Verification', alt: 'Mobile business verification: required documents' },
+        { url: '/work/poplar/m-idle.webp', label: 'Idle cash', alt: 'Mobile idle cash: $189,639.75 from 2 accounts' },
+        { url: '/work/poplar/m-preview.webp', label: 'Deposit preview', alt: 'Mobile deposit preview with the recommended-amount warning' },
+        { url: '/work/poplar/m-withdraw.webp', label: 'Withdrawal', alt: 'Mobile one-time withdrawal, first step' },
+      ],
+    },
+    gallery: [
+      { url: '/work/poplar/sign-up.webp', ratio: '1440 / 959', caption: 'Sign-up: five fields with the company name optional, and two-factor set up right after the first log-in.' },
+      { url: '/work/poplar/bank-accounts.webp', ratio: '1440 / 987', caption: 'Bank accounts: each linked account with its balance and the idle cash found in it.' },
+      { url: '/work/poplar/plans.webp', ratio: '1440 / 987', caption: 'Plans: Earn, Grow and Poplar Pro, told apart by how much can earn interest at once.' },
+      { url: '/work/poplar/security.webp', ratio: '1440 / 1302', caption: 'Security: two-factor, password and an activity log of every sign-in and withdrawal, with IP, location and device.' },
+      { url: '/work/poplar/notifications.webp', ratio: '1440 / 987', caption: 'Notifications: every deposit and withdrawal with its amount, account and time, grouped by day.' },
+      { url: '/work/poplar/insufficient.webp', ratio: '1440 / 987', caption: 'Nothing to withdraw yet: the modal says why and leads back to the dashboard instead of a dead end.' },
+    ],
+    resultsHeading: { eyebrow: 'The product', title: 'By the', em: 'numbers' },
+    results: [
+      { value: 150, suffix: '+', label: 'Desktop screens and states, from sign-up to settings' },
+      { value: 80, suffix: '+', label: 'Mobile screens, every core flow at 320px' },
+      { value: 6, suffix: '', label: 'Documents collected for verification, each with its own upload state' },
+    ],
+    learnings:
+      'In fintech the interface is the trust. Saying how long a review takes, showing where every dollar goes and putting a preview before every transfer did more for confidence than any badge. And one pattern for every money movement meant people only had to learn it once.',
   },
 ]
 

@@ -48,6 +48,7 @@ const KIND_LABELS = {
   system: 'Components',
   creators: 'Creators',
   academy: 'Academy',
+  treasury: 'Treasury',
   abstract: 'Abstract',
 }
 

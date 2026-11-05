@@ -1,0 +1,426 @@
+/* Poplar cover — the "Your Funds" card from the dashboard with the idle cash Poplar found,
+   the finished setup and a completed deposit floating off it, over the brand's dotted
+   poplar tree. Drawn on a centred 100 × 80cqw board, like the Euka and UGC University
+   covers, so it fits the 5:4 work card and the 16:9 case-study frame alike. Every direct
+   child drifts with the pointer by its depth --d, plus a hover offset (--hx, --hy). */
+
+.cover--treasury {
+  background: #123149;
+}
+
+.cover--treasury .cover-art {
+  background:
+    radial-gradient(circle at 88% 92%, rgba(17, 204, 122, 0.34) 0, transparent 42%),
+    radial-gradient(circle at 10% 6%, rgba(127, 145, 163, 0.32) 0, transparent 48%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1.6px) 0 0 / 22px 22px,
+    linear-gradient(150deg, #1a4263, #0e2638);
+}
+
+.pp {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100cqw;
+  height: 80cqw;
+  margin: -40cqw 0 0 -50cqw;
+  color: var(--pp-navy);
+  --pp-navy: #123149;
+  --pp-green: #11cc7a;
+  --pp-green-ink: #0a9a5b;
+  --pp-leaf: #a9d46f;
+  --pp-muted: #7f91a3;
+  --pp-soft: #eef2f6;
+  --pp-shadow: 0 2.6cqw 5.4cqw -1.6cqw rgba(3, 14, 24, 0.55);
+}
+
+.pp > * {
+  position: absolute;
+  translate:
+    calc(var(--px, 0) * var(--d, 1) * 1cqw + var(--hx, 0cqw))
+    calc(var(--py, 0) * var(--d, 1) * 1cqw + var(--hy, 0cqw));
+  transition:
+    translate 0.6s var(--ease-out),
+    scale 0.9s var(--ease-out),
+    rotate 0.9s var(--ease-out);
+}
+
+.pp-ico {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── The tree ─────────────────────────────────────────────────────────────── */
+
+.pp-tree circle,
+.pp-mark circle {
+  fill: var(--pp-green);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.pp-tree circle.is-light,
+.pp-mark circle.is-light {
+  fill: var(--pp-leaf);
+}
+
+.pp-tree {
+  left: 73cqw;
+  top: 27cqw;
+  width: 23cqw;
+  opacity: 0.55;
+  --d: 0.5;
+}
+
+/* ── Your Funds ───────────────────────────────────────────────────────────── */
+
+.pp-funds {
+  left: 9cqw;
+  top: 14cqw;
+  width: 58cqw;
+  --d: 0.9;
+}
+
+.pp-card {
+  padding: 2.4cqw 2.6cqw 2cqw;
+  border-radius: 2cqw;
+  background: #fff;
+  box-shadow: var(--pp-shadow);
+  transform: perspective(160cqw) rotateY(-7deg) rotateX(4deg);
+  transition: transform 1s var(--ease-out);
+}
+
+.pp-head {
+  display: flex;
+  align-items: center;
+  gap: 1.2cqw;
+}
+
+.pp-mark {
+  width: 1.9cqw;
+}
+
+.pp-head b {
+  font-size: 2.2cqw;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.pp-toggle {
+  display: inline-flex;
+  margin-left: auto;
+  padding: 0.4cqw;
+  border-radius: 99px;
+  background: var(--pp-soft);
+}
+
+.pp-toggle i {
+  padding: 0.5cqw 1.3cqw;
+  border-radius: 99px;
+  font-size: 1.1cqw;
+  font-style: normal;
+  color: var(--pp-muted);
+}
+
+.pp-toggle i.is-on {
+  background: var(--pp-navy);
+  color: #fff;
+}
+
+.pp-nums {
+  display: flex;
+  gap: 5cqw;
+  margin-top: 2.4cqw;
+}
+
+.pp-nums small {
+  display: block;
+  font-size: 1.1cqw;
+  color: var(--pp-muted);
+}
+
+.pp-nums b {
+  display: block;
+  margin-top: 0.4cqw;
+  font-size: 3.3cqw;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.pp-nums b.is-green {
+  color: var(--pp-green);
+}
+
+.pp-chart {
+  position: relative;
+  margin-top: 2cqw;
+  aspect-ratio: 2 / 1;
+  border-radius: 1.2cqw;
+  background:
+    linear-gradient(var(--pp-soft) 1px, transparent 1px) 0 0 / 100% 25%,
+    linear-gradient(90deg, var(--pp-soft) 1px, transparent 1px) 0 0 / 16.66% 100%;
+}
+
+.pp-chart svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.pp-line {
+  fill: none;
+  stroke: var(--pp-navy);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.pp-tip {
+  position: absolute;
+  left: 30%;
+  top: 4%;
+  padding: 0.8cqw 1.2cqw;
+  border-radius: 1cqw;
+  background: var(--pp-navy);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.pp-tip small {
+  display: block;
+  font-size: 0.95cqw;
+  opacity: 0.8;
+}
+
+.pp-tip b {
+  display: block;
+  margin-top: 0.3cqw;
+  font-size: 1.5cqw;
+  font-weight: 600;
+  color: var(--pp-green);
+}
+
+/* ── Widgets ──────────────────────────────────────────────────────────────── */
+
+.pw {
+  padding: 1.9cqw 2.1cqw;
+  border-radius: 1.8cqw;
+  background: #fff;
+  box-shadow: var(--pp-shadow);
+}
+
+.pw-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2cqw;
+}
+
+.pw-serif {
+  font-family: var(--font-serif);
+  font-size: 2.1cqw;
+  line-height: 1.1;
+}
+
+.pp-idle {
+  left: 58cqw;
+  top: 7cqw;
+  width: 34cqw;
+  --d: 1.8;
+}
+
+.pp-idle-num {
+  margin: 0.6cqw 0 1.2cqw;
+  font-family: var(--font-serif);
+  font-size: 5cqw;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--pp-green-ink);
+}
+
+.pp-idle small {
+  font-size: 1.15cqw;
+  color: var(--pp-muted);
+}
+
+.pp-go,
+.pp-in {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3.2cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  font-size: 1.6cqw;
+}
+
+.pp-go {
+  background: var(--pp-navy);
+  color: #fff;
+}
+
+.pp-setup {
+  left: 4cqw;
+  top: 54cqw;
+  width: 31cqw;
+  --d: 2.2;
+}
+
+.pp-setup b {
+  font-size: 1.7cqw;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.pp-ring {
+  display: grid;
+  place-items: center;
+  width: 3.8cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0.35cqw var(--pp-green);
+  font-size: 1.1cqw;
+  font-weight: 600;
+}
+
+.pp-setup ol {
+  display: grid;
+  gap: 0.9cqw;
+  margin: 1.4cqw 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pp-setup li {
+  display: flex;
+  align-items: center;
+  gap: 0.9cqw;
+  font-size: 1.2cqw;
+}
+
+.pp-setup li span {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--pp-green);
+  color: #fff;
+  font-size: 1.2cqw;
+}
+
+.pp-toast {
+  display: flex;
+  align-items: center;
+  gap: 1.3cqw;
+  left: 50cqw;
+  top: 63cqw;
+  padding: 1.3cqw 2cqw 1.3cqw 1.4cqw;
+  white-space: nowrap;
+  --d: 2.6;
+  animation: pp-bob 4.6s ease-in-out infinite alternate;
+}
+
+.pp-in {
+  background: var(--pp-green);
+  color: #fff;
+}
+
+.pp-toast b {
+  display: block;
+  font-size: 1.5cqw;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.pp-toast small {
+  display: block;
+  margin-top: 0.3cqw;
+  font-size: 1.1cqw;
+  color: var(--pp-muted);
+}
+
+.pp-amt {
+  margin-left: 1.2cqw;
+  font-size: 1.6cqw;
+  font-weight: 600;
+  color: var(--pp-green-ink);
+}
+
+/* Hover: the funds card settles flat, the widgets spread, the line redraws and the
+   tree lights up dot by dot */
+
+.cover-host:hover .pp-card {
+  transform: perspective(160cqw) rotateY(-2deg) rotateX(1deg) scale(1.02);
+}
+
+.cover-host:hover .pp-idle {
+  --hx: 1.2cqw;
+  --hy: -1cqw;
+  scale: 1.04;
+}
+
+.cover-host:hover .pp-setup {
+  --hx: -1.4cqw;
+  --hy: 1cqw;
+  rotate: -2deg;
+}
+
+.cover-host:hover .pp-toast {
+  --hx: 1.4cqw;
+  --hy: 1cqw;
+  rotate: 2deg;
+}
+
+.cover-host:hover .pp-line {
+  animation: pp-draw 1.4s var(--ease-out) both;
+}
+
+.cover-host:hover .pp-tree circle,
+.cover-host:hover .pp-setup li span {
+  animation: pp-pop 0.6s var(--ease-out) both;
+  animation-delay: calc(var(--i) * 45ms);
+}
+
+.cover-host:hover .pp-setup li span {
+  animation-delay: calc(var(--i) * 120ms);
+}
+
+@keyframes pp-bob {
+  to {
+    transform: translateY(-1cqw);
+  }
+}
+
+@keyframes pp-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes pp-pop {
+  from {
+    scale: 0.2;
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-toast,
+  .cover-host:hover .pp-line,
+  .cover-host:hover .pp-tree circle,
+  .cover-host:hover .pp-setup li span {
+    animation: none;
+  }
+}
