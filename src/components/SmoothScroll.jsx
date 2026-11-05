@@ -22,7 +22,7 @@ export default function SmoothScroll() {
     }
   }, [])
 
-  // Freeze scrolling while the preloader or a page transition covers the screen.
+  // Freeze scrolling while a page transition covers the screen.
   useEffect(() => {
     const lenis = getLenis()
     if (!lenis) return

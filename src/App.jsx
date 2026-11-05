@@ -5,7 +5,6 @@ import { scrollToTarget } from './lib/scroll'
 import { TransitionProvider, useReady } from './components/Transition'
 import { ProjectsProvider } from './components/Projects'
 import SmoothScroll from './components/SmoothScroll'
-import Preloader from './components/Preloader'
 import Cursor from './components/Cursor'
 import ScrollProgress from './components/ScrollProgress'
 import Nav from './components/Nav'
@@ -78,7 +77,6 @@ function Site() {
         </Routes>
       </main>
       <Footer />
-      <Preloader />
       <Cursor />
       <div className="grain" aria-hidden="true" />
     </TransitionProvider>

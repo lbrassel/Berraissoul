@@ -15,9 +15,6 @@ export const site = {
   availability: 'Open to new roles',
   cv: '/Taha-Berraissoul-CV.pdf', // the PDF in /public, linked from the nav, About and footer
 
-  // Loading screen: cycles through these in order, so end on the one you want people to land on.
-  greetings: ['Salam', 'Bonjour', 'Hola', 'Ciao', 'Hallo', 'Hello'],
-
   // Hero: "<heroLead> <one of heroWords>"
   heroLead: ['I design products', 'that feel'],
   heroWords: ['effortless', 'intuitive', 'human', 'delightful'],

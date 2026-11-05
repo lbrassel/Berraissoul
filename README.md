@@ -39,7 +39,6 @@ The downloadable CV is `public/Taha-Berraissoul-CV.pdf`, linked from the nav, th
 
 | Where | What happens |
 | --- | --- |
-| Load | Preloader with counter and letter reveal, then a curved curtain wipe |
 | Everywhere | Lenis smooth scroll, custom blend-mode cursor with contextual labels, magnetic buttons, letter-roll hover on links, scroll progress bar, film grain |
 | Nav | Hides on scroll down, returns on scroll up; full-screen mobile menu |
 | Theme | Light/dark switch with a circular reveal from the click point (View Transitions API) |
